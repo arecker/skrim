@@ -216,5 +216,24 @@
       "/home/deck/src/skrim/mocks/game_dir/Data/SkyUI_SE.bsa"
     ],
     "fomod_choices": null
+  },
+  {
+    "mod_name": "experience",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Interface/exported/HUDHooks.swf",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/Experience.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/Source/Experience.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/Experience.ini",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/Experience/Races/Default.ini",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/Experience/Actors/Default.ini",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/Experience.dll",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/Experience.pdb",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Interface/trainingmenu.swf",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Interface/statsmenu.swf"
+    ],
+    "fomod_choices": {
+      "Plugin version": "AE v1.7.104+",
+      "Aspect ratio": "16:9"
+    }
   }
 ]

@@ -2,4 +2,5 @@
 # Please do not modify this file.
 *unofficial skyrim special edition patch.esp
 *alternate start - live another life.esp
+*Alternate Start -- New Beginnings.esp
 *SkyUI_SE.esp

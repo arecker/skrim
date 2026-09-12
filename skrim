@@ -320,7 +320,7 @@ def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None, skyrim_ver
             targets = calculate_fomod_targets(fomod_config, fomod_choices, paths)
         else:
             fomod_choices = None
-            targets = calculate_targets(paths)
+            targets = calculate_heuristic_targets(paths)
 
         assert targets, f'[{mod.name}] did not match any targets and that is a problem!'
 
@@ -443,9 +443,15 @@ def calculate_fomod_choices(fomod_config, old_choices, skyrim_version=None):
             prompt += f', default {default_index}'
         prompt += ': '
 
-        choice = input(prompt).strip()
-        if not choice and default_index is not None:
-            choice = str(default_index)
+        while True:
+            choice = input(prompt).strip()
+            if not choice and default_index is not None:
+                choice = str(default_index)
+
+            if choice.isdigit() and 1 <= int(choice) <= len(plugins):
+                break
+
+            print(f'Please enter a number between 1 and {len(plugins)}.')
 
         new_choices[group_name] = plugins[int(choice) - 1].attrib['name']
 
@@ -459,8 +465,8 @@ def calculate_fomod_targets(fomod_config, choices, paths):
     """
 
     def matched(source, destination):
-        source_parts = tuple(part.lower() for part in pathlib.Path(source).parts)
-        dest_parts = pathlib.Path(destination).parts if destination else ()
+        source_parts = tuple(part.lower() for part in pathlib.Path(source.replace('\\', '/')).parts)
+        dest_parts = pathlib.Path(destination.replace('\\', '/')).parts if destination else ()
 
         pairs = []
         for p in paths:
@@ -486,7 +492,7 @@ def calculate_fomod_targets(fomod_config, choices, paths):
     return targets
 
 
-def calculate_targets(paths):
+def calculate_heuristic_targets(paths):
     """Take in a list of relative paths, return a list of src/dst pairs.
 
     Only deals with relative paths.
