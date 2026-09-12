@@ -1,5 +1,7 @@
 #!./venv/bin/python
 
+"""skrim - manage your skyrim mods like an adult"""
+
 import argparse
 import collections
 import configparser
@@ -28,27 +30,23 @@ def main():
         logger.info('--debug detected, starting pdb session')
         pdb.set_trace()
 
-    downloads_dir = args.downloads_dir.expanduser()
-    game_dir = args.game_dir.expanduser().resolve()
-    plugins_file = args.plugins_file.expanduser().resolve()
-    ini_file = args.ini_file.expanduser().resolve()
-
-    mods = load_mods(args.config, downloads_dir)
+    config, mods = load_config(args.config)
     logger.info('loaded %d mod(s) from %s', len(mods), args.config)
 
-    installs = load_installations(args.lock_file)
-    logger.info('loaded %d installed mod(s) from %s', len(installs), args.lock_file)
+    lock_file = lock_file_path(args.config)
+
+    installs = load_installations(lock_file)
+    logger.info('loaded %d installed mod(s) from %s', len(installs), lock_file)
 
     old_fomod_choices = {installation.mod_name: installation.fomod_choices for installation in installs if installation.fomod_choices}
 
-    skyrim_version = sniff_out_skyrim_version(game_dir)
+    skyrim_version = sniff_out_skyrim_version(config.game_dir)
     logger.info('sniffed out skyrim version: %s', skyrim_version)
 
     if args.pave:
-        toggle_ini_patch(ini_file, off=True)
-        toggle_plugins_file(installs, plugins_file, off=True)
+        toggle_ini_patch(config.ini_file, off=True)
+        toggle_plugins_file(installs, config.plugins_file, off=True)
         pave_installations(installations=installs)
-        logger.info('paved %s', args.lock_file)
         return
 
     # completely delete old install!
@@ -60,22 +58,30 @@ def main():
     try:
         for i, mod in enumerate(mods):
             logger.info('installing [%s] (%d/%d)', mod.name, i + 1, len(mods))
-            install = install_mod(mod, downloads_dir, game_dir, old_fomod_choices.get(mod.name), skyrim_version)
+            install = install_mod(mod, config.downloads_dir, config.game_dir, old_fomod_choices.get(mod.name), skyrim_version)
             new_installs.append(install)
             logger.info('copied %d file(s) to game directory', len(install.targets))
     except Exception:
-        write_installations(new_installs, args.lock_file)
-        logger.info('wrote partial %s', args.lock_file)
+        write_installations(new_installs, lock_file)
+        logger.info('wrote partial %s', lock_file)
         raise
 
-    toggle_ini_patch(ini_file, off=False)
-    logger.info('applied patch to %s', ini_file)
+    toggle_ini_patch(config.ini_file, off=False)
+    logger.info('applied patch to %s', config.ini_file)
 
-    toggle_plugins_file(new_installs, plugins_file, off=False)
+    toggle_plugins_file(new_installs, config.plugins_file, off=False)
 
-    write_installations(new_installs, args.lock_file)
-    logger.info('wrote %s', args.lock_file)
+    write_installations(new_installs, lock_file)
+    logger.info('wrote %s', lock_file)
 
+
+# The [skrim] section of the config file.
+Config = collections.namedtuple('Config', [
+    'downloads_dir',
+    'game_dir',
+    'plugins_file',
+    'ini_file',
+])
 
 # A Mod that is ready to be installed from a downloaded package.
 Mod = collections.namedtuple('Mod', [
@@ -111,25 +117,35 @@ def parse_args():
 
     Just argparse, only with the courtesy of hiding all of argparse's bullshit.
     """
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-v', '--verbose', action='store_true', default=False, help='show debug logs')
-    parser.add_argument('-d', '--debug', action='store_true', default=False, help='interactively step through code with pdb')
-    parser.add_argument('--config', type=pathlib.Path, default=pathlib.Path('./mods.conf'), help='path to the mods config file')
-    parser.add_argument('--lock-file', type=pathlib.Path, default=pathlib.Path('./mods.lock.json'), help='path to the lockfile')
-    parser.add_argument('--pave', action='store_true', default=False, help='just clear everything out and delete the lockfile, then stop')
-    parser.add_argument('--downloads-dir', type=pathlib.Path, required=True, help='path to the downloaded mod packages')
-    parser.add_argument('--game-dir', type=pathlib.Path, required=True, help='path to the Skyrim install')
-    parser.add_argument('--plugins-file', type=pathlib.Path, required=True, help='path to Plugins.txt')
-    parser.add_argument('--ini-file', type=pathlib.Path, required=True, help='path to Skyrim.ini')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('-c', '--config', type=pathlib.Path, required=True, help='path to the config file (required)')
+
+    options = parser.add_argument_group('Modes', description='(default): installs mods in config')
+    options.add_argument('--pave', action='store_true', default=False, help='return skyrim back to its vanilla state')
+
+    run_modes = parser.add_argument_group('Advanced')
+    run_modes.add_argument('-v', '--verbose', action='store_true', default=False, help='show debug logs')
+    run_modes.add_argument('-d', '--debug', action='store_true', default=False, help='interactively step through code')
+
     return parser.parse_args()
 
 
-def load_mods(config_path, downloads_dir):
-    """Load list of `Mod` tuples from the config path.
+def lock_file_path(config_path):
+    """Derive the lockfile path from the config file's basename."""
+    config_path = pathlib.Path(config_path)
+    return config_path.with_name(f'{config_path.stem}.lock.json')
+
+
+def load_config(config_path):
+    """Load the `[skrim]` section and the list of `Mod` tuples from the config path.
 
     Raises a ValueError if you dicked up, like passed in a path that
     doesn't exist or screwed up your config file.  Take it up with
     python, I'm just using the library!
+
+    Raises a ValueError if [skrim] is missing or any of its fields are missing.
+
+    Returns a (Config, list of Mod) tuple.
     """
     config_path = pathlib.Path(config_path)
 
@@ -143,9 +159,27 @@ def load_mods(config_path, downloads_dir):
     except configparser.Error as error:
         raise ValueError(f'failed to parse config file {config_path}: {error}') from error
 
+    if not parser.has_section('skrim'):
+        raise ValueError(f'[skrim] section missing from {config_path}')
+
+    try:
+        config = Config(**dict(parser.items('skrim')))
+    except TypeError as e:
+        raise ValueError(f'[skrim] is misconfigured! {e}')
+
+    config = config._replace(
+        downloads_dir=pathlib.Path(config.downloads_dir).expanduser(),
+        game_dir=pathlib.Path(config.game_dir).expanduser().resolve(),
+        plugins_file=pathlib.Path(config.plugins_file).expanduser().resolve(),
+        ini_file=pathlib.Path(config.ini_file).expanduser().resolve(),
+    )
+
     mods = []
 
     for section in parser.sections():
+        if section == 'skrim':
+            continue
+
         kwargs = dict(parser.items(section))
 
         try:
@@ -153,13 +187,13 @@ def load_mods(config_path, downloads_dir):
         except TypeError as e:
             raise ValueError(f'[{section}] is misconfigured! {e}')
 
-        mod_path = pathlib.Path(downloads_dir) / mod.filename
+        mod_path = config.downloads_dir / mod.filename
         if not mod_path.is_file():
             raise ValueError(f'[{section}] file does not exist: {mod_path}')
 
         mods.append(mod)
 
-    return mods
+    return config, mods
 
 
 def load_installations(lockfile_path):

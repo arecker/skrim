@@ -1,0 +1,275 @@
+[
+  {
+    "mod_name": "skse64",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/skse64_loader.exe",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/skse64_1_7_104.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/wornobject.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/weather.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/weapon.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/utility.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/uicallback.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/ui.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/treeobject.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/textureset.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/stringutil.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/spell.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/spawnertask.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/sounddescriptor.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/sound.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/soulgem.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/skse.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/shout.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/scroll.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/race.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/quest.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/potion.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/perk.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/outfit.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/objectreference.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/netimmerse.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/modevent.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/math.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/magiceffect.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/location.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/leveledspell.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/leveleditem.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/leveledactor.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/keyword.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/input.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/ingredient.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/headpart.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/gamedata.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/game.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/formtype.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/formlist.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/form.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/flora.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/faction.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/equipslot.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/enchantment.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/defaultobjectmanager.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/constructibleobject.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/combatstyle.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/colorform.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/colorcomponent.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/cell.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/camera.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/book.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/art.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/armoraddon.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/armor.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/apparatus.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/ammo.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/alias.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/actorvalueinfo.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/actorbase.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/actor.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/activemagiceffect.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/WornObject.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Weather.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Weapon.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Utility.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/UICallback.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/UI.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/TreeObject.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/TextureSet.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/StringUtil.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Spell.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/SpawnerTask.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/SoundDescriptor.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Sound.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/SoulGem.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/SKSE.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Shout.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Scroll.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Race.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Quest.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Potion.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Perk.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Outfit.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ObjectReference.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/NetImmerse.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ModEvent.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Math.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/MagicEffect.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Location.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/LeveledSpell.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/LeveledItem.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/LeveledActor.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Keyword.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Input.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Ingredient.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/HeadPart.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/GameData.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Game.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/FormType.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/FormList.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Form.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Flora.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Faction.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/EquipSlot.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Enchantment.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/DefaultObjectManager.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ConstructibleObject.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/CombatStyle.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ColorForm.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ColorComponent.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Cell.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Camera.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Book.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Art.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ArmorAddon.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Armor.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Apparatus.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Ammo.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Alias.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ActorValueInfo.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ActorBase.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Actor.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ActiveMagicEffect.psc"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "address_library",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-7-104-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-7-99-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-80-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-73-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-62-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-53-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-50-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-39-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-23-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-16-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-3-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/version-1-5-97-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-1179-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-1170-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-1170-0-1.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-1130-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-659-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-640-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-629-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-353-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-342-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-323-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-317-0.bin",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-318-0.bin"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "powerofthree_tweaks",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/po3_Tweaks.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/source/scripts/po3_Tweaks.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/po3_Tweaks.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/po3_Tweaks.pdb"
+    ],
+    "fomod_choices": {
+      "DLL": "SSE/AE v1.7.99+ (\"Anniversary/Special Edition\")"
+    }
+  },
+  {
+    "mod_name": "dllloader",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/DINPUT8.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Plugins/Sumwunn/DllLoader.ini"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "ussep",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/unofficial skyrim special edition patch.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/unofficial skyrim special edition patch.bsa",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/unofficial skyrim special edition patch - textures.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "achievements_mods_enabler",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Plugins/Sumwunn/AchievementsModsEnabler.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Plugins/Sumwunn/AchievementsModsEnabler.dll_Exports.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Plugins/Sumwunn/AchievementsModsEnabler.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AchievementsModsEnablerLoader.dll"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "alternate_start",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/alternate start - live another life.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/alternate start - live another life.bsa",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/alternate start - live another life - textures.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "alternate_start_new_beginnings",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Alternate Start -- New Beginnings.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Alternate Start -- New Beginnings.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "skyui",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SkyUI_SE.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SkyUI_SE.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "experience",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Interface/exported/HUDHooks.swf",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Experience.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/Experience.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/Experience.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/Experience/Races/Default.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/Experience/Actors/Default.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/Experience.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/Experience.pdb",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Interface/trainingmenu.swf",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Interface/statsmenu.swf"
+    ],
+    "fomod_choices": {
+      "Plugin version": "AE v1.7.104+",
+      "Aspect ratio": "16:9"
+    }
+  },
+  {
+    "mod_name": "better_jumping",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/BetterJumpingSE.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/BetterJumpingSE.dll"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "instantly_skip_dialogue",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InstantlySkipDialogueSKSE.pdb",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InstantlySkipDialogueSKSE.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InstantlySkipDialogueSKSE.dll"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "sound_record_distributor",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor.pdb",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor/LICENSE",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor/EXCEPTIONS.md",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor/COPYING"
+    ],
+    "fomod_choices": null
+  }
+]
