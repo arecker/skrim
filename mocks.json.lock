@@ -202,6 +202,14 @@
     "fomod_choices": null
   },
   {
+    "mod_name": "alternate_start_new_beginnings",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Alternate Start -- New Beginnings.esp",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Alternate Start -- New Beginnings.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
     "mod_name": "skyui",
     "targets": [
       "/home/deck/src/skrim/mocks/game_dir/Data/SkyUI_SE.esp",
