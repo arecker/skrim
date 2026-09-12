@@ -38,6 +38,8 @@ def main():
     installs = load_installations(args.lock_file)
     logger.info('loaded %d installed mod(s) from %s', len(installs), args.lock_file)
 
+    old_fomod_choices = {installation.mod_name: installation.fomod_choices for installation in installs if installation.fomod_choices}
+
     if args.pave:
         toggle_ini_patch(ini_file, off=True)
         toggle_plugins_file(installs, plugins_file, off=True)
@@ -54,7 +56,7 @@ def main():
     try:
         for i, mod in enumerate(mods):
             logger.info('installing [%s] (%d/%d)', mod.name, i + 1, len(mods))
-            install = install_mod(mod, downloads_dir, game_dir)
+            install = install_mod(mod, downloads_dir, game_dir, old_fomod_choices.get(mod.name))
             new_installs.append(install)
             logger.info('copied %d file(s) to game directory', len(install.targets))
     except Exception:
@@ -81,6 +83,7 @@ Mod = collections.namedtuple('Mod', [
 Installation = collections.namedtuple('Installation', [
     'mod_name',  # mod name from config
     'targets',  # list of absolute paths
+    'fomod_choices',  # dict of group name -> chosen plugin name, or None
 ])
 
 
@@ -276,7 +279,7 @@ def package_unzipped_in_temp_dir(package_path):
         yield temp_dir, paths
 
 
-def install_mod(mod, downloads_dir, game_dir):
+def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None):
     """Installs the mod from the package."""
 
     package_path = pathlib.Path(downloads_dir) / mod.filename
@@ -285,8 +288,10 @@ def install_mod(mod, downloads_dir, game_dir):
 
     with package_unzipped_in_temp_dir(package_path) as (temp_dir, paths):
         if (fomod_config := load_fomod_config(temp_dir, paths)) is not None:
-            targets = calculate_fomod_targets(fomod_config, paths)
+            fomod_choices = calculate_fomod_choices(fomod_config, old_fomod_choices)
+            targets = calculate_fomod_targets(fomod_config, fomod_choices, paths)
         else:
+            fomod_choices = None
             targets = calculate_targets(paths)
 
         assert targets, f'[{mod.name}] did not match any targets and that is a problem!'
@@ -310,7 +315,7 @@ def install_mod(mod, downloads_dir, game_dir):
             raise
 
     # return it as an installation
-    return Installation(mod_name=mod.name, targets=[str(t) for t in copied])
+    return Installation(mod_name=mod.name, targets=[str(t) for t in copied], fomod_choices=fomod_choices)
 
 
 def load_fomod_config(temp_dir, paths):
@@ -326,10 +331,73 @@ def load_fomod_config(temp_dir, paths):
     return xml.etree.ElementTree.parse(temp_dir / fomod_paths[0]).getroot()
 
 
-def calculate_fomod_targets(fomod_config, paths):
-    """Take a parsed fomod config and relative paths, return a list of src/dst pairs."""
+def calculate_fomod_choices(fomod_config, old_choices):
+    """Prompt for (or reuse) a choice per fomod group.
 
-    raise NotImplementedError('no fomod support yet!')
+    Returns a dict of group name -> chosen plugin name.
+    """
+
+    old_choices = old_choices or {}
+    new_choices = {}
+
+    for group in fomod_config.findall('./installSteps/installStep/optionalFileGroups/group'):
+        if group.attrib['type'] != 'SelectExactlyOne':
+            raise NotImplementedError(f'fomod group type not supported yet: {group.attrib["type"]}')
+
+        group_name = group.attrib['name']
+        plugins = group.findall('./plugins/plugin')
+        plugin_names = [plugin.attrib['name'] for plugin in plugins]
+
+        remembered = old_choices.get(group_name)
+        if remembered in plugin_names:
+            new_choices[group_name] = remembered
+            continue
+
+        print(f'\n{group_name}:')
+        for i, plugin in enumerate(plugins, start=1):
+            description = plugin.findtext('description', default='').strip()
+            print(f'  {i}) {plugin.attrib["name"]}')
+            if description:
+                print(f'     {description}')
+
+        choice = input(f'Choice [1-{len(plugins)}]: ')
+        new_choices[group_name] = plugins[int(choice) - 1].attrib['name']
+
+    return new_choices
+
+
+def calculate_fomod_targets(fomod_config, choices, paths):
+    """Take a parsed fomod config, chosen plugin names, and relative paths.
+
+    Returns a list of src/dst pairs.
+    """
+
+    def matched(source, destination):
+        source_parts = tuple(part.lower() for part in pathlib.Path(source).parts)
+        dest_parts = pathlib.Path(destination).parts if destination else ()
+
+        pairs = []
+        for p in paths:
+            p_parts_lower = tuple(part.lower() for part in p.parts)
+            if p_parts_lower[:len(source_parts)] != source_parts:
+                continue
+            pairs.append((p, pathlib.Path('Data', *dest_parts, *p.parts[len(source_parts):])))
+        return pairs
+
+    targets = []
+
+    for folder in fomod_config.findall('./requiredInstallFiles/folder'):
+        targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
+
+    for group in fomod_config.findall('./installSteps/installStep/optionalFileGroups/group'):
+        group_name = group.attrib['name']
+        chosen_name = choices[group_name]
+        chosen = next(plugin for plugin in group.findall('./plugins/plugin') if plugin.attrib['name'] == chosen_name)
+
+        for folder in chosen.findall('./files/folder'):
+            targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
+
+    return targets
 
 
 def calculate_targets(paths):

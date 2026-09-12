@@ -128,7 +128,8 @@
       "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/Source/ActorBase.psc",
       "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/Source/Actor.psc",
       "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/Source/ActiveMagicEffect.psc"
-    ]
+    ],
+    "fomod_choices": null
   },
   {
     "mod_name": "address_library",
@@ -157,6 +158,55 @@
       "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/versionlib-1-6-323-0.bin",
       "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/versionlib-1-6-317-0.bin",
       "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/versionlib-1-6-318-0.bin"
-    ]
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "powerofthree_tweaks",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/scripts/po3_Tweaks.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/source/scripts/po3_Tweaks.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/po3_Tweaks.dll",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/po3_Tweaks.pdb"
+    ],
+    "fomod_choices": {
+      "DLL": "SSE/AE v1.7.99+ (\"Anniversary/Special Edition\")"
+    }
+  },
+  {
+    "mod_name": "ussep",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/unofficial skyrim special edition patch.esp",
+      "/home/deck/src/skrim/mocks/game_dir/Data/unofficial skyrim special edition patch.bsa",
+      "/home/deck/src/skrim/mocks/game_dir/Data/unofficial skyrim special edition patch - textures.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "achievements_mods_enabler",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Plugins/Sumwunn/AchievementsModsEnabler.ini",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Plugins/Sumwunn/AchievementsModsEnabler.dll_Exports.txt",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Plugins/Sumwunn/AchievementsModsEnabler.dll",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SKSE/Plugins/AchievementsModsEnablerLoader.dll"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "alternate_start",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/alternate start - live another life.esp",
+      "/home/deck/src/skrim/mocks/game_dir/Data/alternate start - live another life.bsa",
+      "/home/deck/src/skrim/mocks/game_dir/Data/alternate start - live another life - textures.bsa"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "skyui",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/SkyUI_SE.esp",
+      "/home/deck/src/skrim/mocks/game_dir/Data/SkyUI_SE.bsa"
+    ],
+    "fomod_choices": null
   }
 ]
