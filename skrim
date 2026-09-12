@@ -9,6 +9,7 @@ import libarchive
 import logging
 import pathlib
 import pdb
+import re
 import sys
 import tempfile
 import xml.etree.ElementTree
@@ -40,6 +41,9 @@ def main():
 
     old_fomod_choices = {installation.mod_name: installation.fomod_choices for installation in installs if installation.fomod_choices}
 
+    skyrim_version = sniff_out_skyrim_version(game_dir)
+    logger.info('sniffed out skyrim version: %s', skyrim_version)
+
     if args.pave:
         toggle_ini_patch(ini_file, off=True)
         toggle_plugins_file(installs, plugins_file, off=True)
@@ -56,7 +60,7 @@ def main():
     try:
         for i, mod in enumerate(mods):
             logger.info('installing [%s] (%d/%d)', mod.name, i + 1, len(mods))
-            install = install_mod(mod, downloads_dir, game_dir, old_fomod_choices.get(mod.name))
+            install = install_mod(mod, downloads_dir, game_dir, old_fomod_choices.get(mod.name), skyrim_version)
             new_installs.append(install)
             logger.info('copied %d file(s) to game directory', len(install.targets))
     except Exception:
@@ -226,6 +230,30 @@ def toggle_plugins_file(installations, plugins_path, off=False):
     plugins_path.write_text('\n'.join(lines) + '\n')
 
 
+def sniff_out_skyrim_version(game_dir):
+    """Guess the installed Skyrim version.
+
+    We don't actually parse SkyrimSE.exe as a real PE file -- we just
+    search its raw bytes for anything that looks like a version string
+    (four dot-separated numbers) and take the biggest one we find.
+
+    Returns None if we can't find SkyrimSE.exe, or nothing version-shaped in it.
+    """
+
+    exe_path = pathlib.Path(game_dir) / 'SkyrimSE.exe'
+
+    if not exe_path.is_file():
+        return None
+
+    text = exe_path.read_bytes().decode('utf-16-le', errors='ignore')
+    versions = re.findall(r'\d+\.\d+\.\d+\.\d+', text)
+
+    if not versions:
+        return None
+
+    return max(versions, key=lambda version: tuple(int(part) for part in version.split('.')))
+
+
 def pave_installations(installations):
     """Delete the existing installations from the game_dir"""
 
@@ -279,7 +307,7 @@ def package_unzipped_in_temp_dir(package_path):
         yield temp_dir, paths
 
 
-def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None):
+def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None, skyrim_version=None):
     """Installs the mod from the package."""
 
     package_path = pathlib.Path(downloads_dir) / mod.filename
@@ -288,7 +316,7 @@ def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None):
 
     with package_unzipped_in_temp_dir(package_path) as (temp_dir, paths):
         if (fomod_config := load_fomod_config(temp_dir, paths)) is not None:
-            fomod_choices = calculate_fomod_choices(fomod_config, old_fomod_choices)
+            fomod_choices = calculate_fomod_choices(fomod_config, old_fomod_choices, skyrim_version)
             targets = calculate_fomod_targets(fomod_config, fomod_choices, paths)
         else:
             fomod_choices = None
@@ -331,7 +359,43 @@ def load_fomod_config(temp_dir, paths):
     return xml.etree.ElementTree.parse(temp_dir / fomod_paths[0]).getroot()
 
 
-def calculate_fomod_choices(fomod_config, old_choices):
+def recommended_plugin_index(plugins, skyrim_version):
+    """Guess which plugin (1-indexed) a fomod group's own gameDependency patterns recommend.
+
+    Returns None if we don't have a skyrim_version, or nothing recommends itself.
+    """
+
+    if skyrim_version is None:
+        return None
+
+    detected = tuple(int(part) for part in skyrim_version.split('.'))
+
+    best_index = None
+    best_threshold = None
+
+    for i, plugin in enumerate(plugins, start=1):
+        applicable = []
+        for pattern in plugin.findall('./typeDescriptor/dependencyType/patterns/pattern'):
+            game_dependency = pattern.find('./dependencies/gameDependency')
+            if game_dependency is None:
+                continue
+
+            threshold = tuple(int(part) for part in game_dependency.attrib['version'].split('.'))
+            if detected >= threshold:
+                applicable.append((threshold, pattern.find('./type').attrib['name']))
+
+        if not applicable:
+            continue
+
+        threshold, type_name = max(applicable, key=lambda pair: pair[0])
+        if type_name == 'Recommended' and (best_threshold is None or threshold > best_threshold):
+            best_index = i
+            best_threshold = threshold
+
+    return best_index
+
+
+def calculate_fomod_choices(fomod_config, old_choices, skyrim_version=None):
     """Prompt for (or reuse) a choice per fomod group.
 
     Returns a dict of group name -> chosen plugin name.
@@ -353,14 +417,25 @@ def calculate_fomod_choices(fomod_config, old_choices):
             new_choices[group_name] = remembered
             continue
 
+        default_index = recommended_plugin_index(plugins, skyrim_version)
+
         print(f'\n{group_name}:')
         for i, plugin in enumerate(plugins, start=1):
             description = plugin.findtext('description', default='').strip()
-            print(f'  {i}) {plugin.attrib["name"]}')
+            marker = ' (default)' if i == default_index else ''
+            print(f'  {i}) {plugin.attrib["name"]}{marker}')
             if description:
                 print(f'     {description}')
 
-        choice = input(f'Choice [1-{len(plugins)}]: ')
+        prompt = f'Choice [1-{len(plugins)}]'
+        if default_index is not None:
+            prompt += f', default {default_index}'
+        prompt += ': '
+
+        choice = input(prompt).strip()
+        if not choice and default_index is not None:
+            choice = str(default_index)
+
         new_choices[group_name] = plugins[int(choice) - 1].attrib['name']
 
     return new_choices
