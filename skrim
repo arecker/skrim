@@ -581,7 +581,7 @@ def calculate_heuristic_targets(paths):
     targets += [(p, pathlib.Path('Data/') / p) for p in paths if p.full_match('SKSE/**')]
 
     # plugin/archive files loose in the root go into game_dir/Data
-    for ext in ('.esp', '.esl', '.bsa'):
+    for ext in ('.esp', '.esl', '.bsa', '.bsl'):
         targets += [(p, pathlib.Path('Data') / p) for p in paths if p.full_match(f'*{ext}')]
 
     return targets
