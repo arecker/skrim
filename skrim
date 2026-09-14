@@ -581,7 +581,7 @@ def calculate_heuristic_targets(paths):
     targets += [(p, pathlib.Path('Data/') / p) for p in paths if p.full_match('SKSE/**')]
 
     # plugin/archive files loose in the root go into game_dir/Data
-    for ext in ('.esp', '.esl', '.bsa', '.bsl'):
+    for ext in ('.esp', '.esl', '.bsa', '.bsl', '.ini'):
         targets += [(p, pathlib.Path('Data') / p) for p in paths if p.full_match(f'*{ext}')]
 
     # any other top level directory is assumed to be Data-relative content shipped without the Data/ wrapper
