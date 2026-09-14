@@ -584,6 +584,10 @@ def calculate_heuristic_targets(paths):
     for ext in ('.esp', '.esl', '.bsa', '.bsl'):
         targets += [(p, pathlib.Path('Data') / p) for p in paths if p.full_match(f'*{ext}')]
 
+    # any other top level directory is assumed to be Data-relative content shipped without the Data/ wrapper
+    accounted_for_dirs = ('data', 'skse')
+    targets += [(p, pathlib.Path('Data') / p) for p in paths if len(p.parts) > 1 and p.parts[0].lower() not in accounted_for_dirs]
+
     return targets
 
 
