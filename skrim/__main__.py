@@ -1,5 +1,3 @@
-#!./venv/bin/python
-
 """skrim - manage your skyrim mods like an adult"""
 
 import argparse
@@ -38,7 +36,7 @@ def main():
     installs = load_installations(lock_file)
     logger.info('loaded %d installed mod(s) from %s', len(installs), lock_file)
 
-    old_fomod_choices = {installation.mod_name: installation.fomod_choices for installation in installs if installation.fomod_choices}
+    old_fomod_choices = {} if args.again else {installation.mod_name: installation.fomod_choices for installation in installs if installation.fomod_choices}
 
     skyrim_version = sniff_out_skyrim_version(config.game_dir)
     logger.info('sniffed out skyrim version: %s', skyrim_version)
@@ -122,6 +120,7 @@ def parse_args():
 
     options = parser.add_argument_group('Modes', description='(default): installs mods in config')
     options.add_argument('--pave', action='store_true', default=False, help='return skyrim back to its vanilla state')
+    options.add_argument('--again', action='store_true', default=False, help='prompt interactive installers again')
 
     run_modes = parser.add_argument_group('Advanced')
     run_modes.add_argument('-v', '--verbose', action='store_true', default=False, help='show debug logs')
@@ -210,7 +209,7 @@ def load_installations(lockfile_path):
 
 
 def toggle_ini_patch(ini_path, off=False):
-    """Toggle skrim's [Archive] changes in the ini at `ini_path`.
+    """Toggle skrim's [Archive] and [Papyrus] changes in the ini at `ini_path`.
 
     off=True makes it vanilla, off=False makes it mod friendly.
     """
@@ -220,12 +219,14 @@ def toggle_ini_patch(ini_path, off=False):
     parser.read(ini_path)
 
     if off:
-        if not parser.has_section('Archive'):
-            return
+        if parser.has_section('Archive'):
+            logger.info('removing ini patch from %s', ini_path)
+            parser.remove_option('Archive', 'bInvalidateOlderFiles')
+            parser.remove_option('Archive', 'sResourceDataDirsFinal')
 
-        logger.info('removing ini patch from %s', ini_path)
-        parser.remove_option('Archive', 'bInvalidateOlderFiles')
-        parser.remove_option('Archive', 'sResourceDataDirsFinal')
+        if parser.has_section('Papyrus'):
+            parser.remove_option('Papyrus', 'bEnableLogging')
+            parser.remove_option('Papyrus', 'bEnableTrace')
     else:
         logger.info('adding ini patch to %s', ini_path)
 
@@ -234,6 +235,12 @@ def toggle_ini_patch(ini_path, off=False):
 
         parser.set('Archive', 'bInvalidateOlderFiles', '1')
         parser.set('Archive', 'sResourceDataDirsFinal', '')
+
+        if not parser.has_section('Papyrus'):
+            raise ValueError(f'[Papyrus] section missing from {ini_path}')
+
+        parser.set('Papyrus', 'bEnableLogging', '1')
+        parser.set('Papyrus', 'bEnableTrace', '1')
 
     with ini_path.open('w') as f:
         parser.write(f)
@@ -297,7 +304,7 @@ def pave_installations(installations):
         for target in installation.targets:
             target_path = pathlib.Path(target)
             logger.debug('deleting [%s] target %s', installation.mod_name, target_path)
-            target_path.unlink()
+            target_path.unlink(missing_ok=True)
 
 
 @contextlib.contextmanager
@@ -320,17 +327,33 @@ def package_unzipped_in_temp_dir(package_path):
                     if entry.isdir:
                         continue
 
+                    written = 0
                     with target.open('wb') as f:
-                        for block in entry.get_blocks():
-                            f.write(block)
+                        try:
+                            for block in entry.get_blocks():
+                                f.write(block)
+                                written += len(block)
+                        except libarchive.exception.ArchiveError:
+                            # some .rar files trip libarchive's CRC check even though the
+                            # bytes it already wrote out are the complete, correct entry --
+                            # a known libarchive limitation with certain RAR compression
+                            # settings. Only treat it as fatal if we came up short.
+                            if written != entry.size:
+                                raise
+                            logger.warning('ignoring libarchive CRC mismatch for [%s]: got all %d expected bytes anyway', entry.pathname, entry.size)
         else:
             with zipfile.ZipFile(package_path) as archive:
                 archive.extractall(temp_dir)
 
         # if there is just one directory in the package, then "cd"
-        # into it and treat it like the root.  unless that directory
-        # is "Data" or "SKSE", which need to stay put relative to the game_dir.
-        special_case_dirs = ('data', 'skse')
+        # into it and treat it like the root.  unless that directory is
+        # itself a standard Data-relative folder (Data/SKSE/Scripts/etc.),
+        # which needs to stay put relative to the game_dir instead of
+        # being mistaken for a wrapper folder around the real content.
+        special_case_dirs = (
+            'data', 'skse', 'interface', 'meshes', 'misc', 'music',
+            'scripts', 'seq', 'shadersfx', 'sound', 'strings', 'textures', 'video',
+        )
         entries = list(temp_dir.iterdir())
         if len(entries) == 1 and entries[0].is_dir() and entries[0].name.lower() not in special_case_dirs:
             temp_dir = entries[0]
@@ -350,8 +373,8 @@ def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None, skyrim_ver
 
     with package_unzipped_in_temp_dir(package_path) as (temp_dir, paths):
         if (fomod_config := load_fomod_config(temp_dir, paths)) is not None:
-            fomod_choices = calculate_fomod_choices(fomod_config, old_fomod_choices, skyrim_version)
-            targets = calculate_fomod_targets(fomod_config, fomod_choices, paths)
+            fomod_choices = calculate_fomod_choices(fomod_config, old_fomod_choices, skyrim_version, game_dir)
+            targets = calculate_fomod_targets(fomod_config, fomod_choices, paths, game_dir)
         else:
             fomod_choices = None
             targets = calculate_heuristic_targets(paths)
@@ -440,7 +463,77 @@ def recommended_plugin_index(plugins, skyrim_version):
     return best_index
 
 
-def calculate_fomod_choices(fomod_config, old_choices, skyrim_version=None):
+def installed_plugin_files(game_dir):
+    """Return the lowercased plugin filenames (.esp/.esm/.esl) already sitting in game_dir's Data folder.
+
+    Used to evaluate fomod <fileDependency> conditions during install. skrim always enables
+    every plugin it installs (see toggle_plugins_file), so there's no separate 'inactive but
+    present' state to track -- a plugin's presence on disk is enough to answer both the 'Active'
+    and 'Inactive' fileDependency states correctly.
+    """
+
+    data_dir = pathlib.Path(game_dir) / 'Data'
+    if not data_dir.is_dir():
+        return frozenset()
+
+    return frozenset(p.name.lower() for p in data_dir.iterdir() if p.suffix.lower() in ('.esp', '.esm', '.esl'))
+
+
+def fomod_dependencies_met(dependencies, flags, data_files=frozenset()):
+    """Evaluate a fomod <dependencies> element against a flags dict and installed plugin files.
+
+    Handles flagDependency and fileDependency children, in document order, plus nested
+    <dependencies> for compound conditions -- fomod authors mix these freely. gameDependency is
+    treated as always satisfied, since skrim already gates the whole run on the detected Skyrim
+    version rather than per-dependency.
+
+    A flag that was never set by a chosen plugin counts as 'Off', matching how FOMOD authors use it.
+    """
+
+    results = []
+    for dep in dependencies:
+        if dep.tag == 'flagDependency':
+            current = flags.get(dep.attrib['flag'], '')
+            expected = dep.attrib['value']
+            results.append(current == expected or (expected == 'Off' and current == ''))
+        elif dep.tag == 'fileDependency':
+            present = dep.attrib['file'].lower() in data_files
+            results.append(not present if dep.attrib['state'] == 'Missing' else present)
+        elif dep.tag == 'gameDependency':
+            results.append(True)
+        elif dep.tag == 'dependencies':
+            results.append(fomod_dependencies_met(dep, flags, data_files))
+
+    return all(results) if dependencies.attrib.get('operator', 'And') == 'And' else any(results)
+
+
+def resolve_plugin_type(plugin, flags, data_files):
+    """Resolve a fomod plugin's type (Required/Recommended/Optional/NotUsable/CouldBeUsable).
+
+    Checks the plugin's typeDescriptor patterns (in order) against the current flags and
+    installed files, falling back to its defaultType. Falls back further to 'Optional' for
+    plugins with no typeDescriptor info at all, which keeps old two-state (visible/hidden) fomods
+    behaving exactly as before.
+    """
+
+    static_type = plugin.find('./typeDescriptor/type')
+    if static_type is not None:
+        return static_type.attrib['name']
+
+    dependency_type = plugin.find('./typeDescriptor/dependencyType')
+    if dependency_type is None:
+        return 'Optional'
+
+    for pattern in dependency_type.findall('./patterns/pattern'):
+        dependencies = pattern.find('./dependencies')
+        if dependencies is not None and fomod_dependencies_met(dependencies, flags, data_files):
+            return pattern.find('./type').attrib['name']
+
+    default_type = dependency_type.find('./defaultType')
+    return default_type.attrib['name'] if default_type is not None else 'Optional'
+
+
+def calculate_fomod_choices(fomod_config, old_choices, skyrim_version=None, game_dir=None):
     """Prompt for (or reuse) a choice per fomod group.
 
     Returns a dict of group name -> chosen plugin name.
@@ -448,80 +541,124 @@ def calculate_fomod_choices(fomod_config, old_choices, skyrim_version=None):
 
     old_choices = old_choices or {}
     new_choices = {}
+    flags = {}
+    data_files = installed_plugin_files(game_dir) if game_dir else frozenset()
 
-    for group in fomod_config.findall('./installSteps/installStep/optionalFileGroups/group'):
-        if group.attrib['type'] not in ('SelectExactlyOne', 'SelectAny'):
-            raise NotImplementedError(f'fomod group type not supported yet: {group.attrib["type"]}')
-
-        group_name = group.attrib['name']
-        plugins = group.findall('./plugins/plugin')
-        plugin_names = [plugin.attrib['name'] for plugin in plugins]
-
-        if group.attrib['type'] == 'SelectAny':
-            remembered = old_choices.get(group_name)
-            if isinstance(remembered, list) and all(name in plugin_names for name in remembered):
-                new_choices[group_name] = remembered
-                continue
-
-            print(f'\n{group_name} (select any):')
-            for i, plugin in enumerate(plugins, start=1):
-                description = plugin.findtext('description', default='').strip()
-                print(f'  {i}) {plugin.attrib["name"]}')
-                if description:
-                    print(f'     {description}')
-
-            while True:
-                choice = input(f'Choices [1-{len(plugins)}, comma-separated, blank for none]: ').strip()
-                if not choice:
-                    picks = []
-                    break
-
-                indices = [part.strip() for part in choice.split(',')]
-                if all(index.isdigit() and 1 <= int(index) <= len(plugins) for index in indices):
-                    picks = [plugins[int(index) - 1].attrib['name'] for index in indices]
-                    break
-
-                print(f'Please enter numbers between 1 and {len(plugins)}, comma-separated.')
-
-            new_choices[group_name] = picks
+    for step in fomod_config.findall('./installSteps/installStep'):
+        visible = step.find('./visible/dependencies')
+        if visible is not None and not fomod_dependencies_met(visible, flags, data_files):
             continue
 
-        remembered = old_choices.get(group_name)
-        if remembered in plugin_names:
-            new_choices[group_name] = remembered
-            continue
+        for group in step.findall('./optionalFileGroups/group'):
+            group_type = group.attrib['type']
+            if group_type not in ('SelectExactlyOne', 'SelectAny', 'SelectAtMostOne', 'SelectAll'):
+                raise NotImplementedError(f'fomod group type not supported yet: {group_type}')
 
-        default_index = recommended_plugin_index(plugins, skyrim_version)
+            group_name = group.attrib['name']
+            plugins = group.findall('./plugins/plugin')
+            plugin_names = [plugin.attrib['name'] for plugin in plugins]
 
-        print(f'\n{group_name}:')
-        for i, plugin in enumerate(plugins, start=1):
-            description = plugin.findtext('description', default='').strip()
-            marker = ' (default)' if i == default_index else ''
-            print(f'  {i}) {plugin.attrib["name"]}{marker}')
-            if description:
-                print(f'     {description}')
+            if group_type == 'SelectAll':
+                chosen = plugin_names
 
-        prompt = f'Choice [1-{len(plugins)}]'
-        if default_index is not None:
-            prompt += f', default {default_index}'
-        prompt += ': '
+            elif group_type in ('SelectAny', 'SelectAtMostOne'):
+                limit = 1 if group_type == 'SelectAtMostOne' else len(plugins)
 
-        while True:
-            choice = input(prompt).strip()
-            if not choice and default_index is not None:
-                choice = str(default_index)
+                remembered = old_choices.get(group_name)
+                if isinstance(remembered, list) and len(remembered) <= limit and all(name in plugin_names for name in remembered):
+                    chosen = remembered
+                else:
+                    # a plugin's typeDescriptor tells us whether it even applies to this
+                    # install (NotUsable) and whether it should be pre-picked (Required/
+                    # Recommended) -- e.g. Legacy of the Dragonborn's patches fomod has groups
+                    # with 50+ plugins, one per compatible mod, and almost all of them resolve
+                    # to NotUsable because that mod isn't installed. Filtering those out turns a
+                    # wall of irrelevant prompts into a short, mostly-defaultable one.
+                    plugin_types = {plugin.attrib['name']: resolve_plugin_type(plugin, flags, data_files) for plugin in plugins}
+                    available = [plugin for plugin in plugins if plugin_types[plugin.attrib['name']] != 'NotUsable']
+                    defaults = [plugin.attrib['name'] for plugin in available if plugin_types[plugin.attrib['name']] in ('Required', 'Recommended')]
 
-            if choice.isdigit() and 1 <= int(choice) <= len(plugins):
-                break
+                    if group_type == 'SelectAtMostOne' and len(defaults) > 1:
+                        # can't default multiple picks into a one-choice slot; let the user decide
+                        defaults = []
 
-            print(f'Please enter a number between 1 and {len(plugins)}.')
+                    if not available:
+                        chosen = []
+                    else:
+                        label = 'select at most one' if group_type == 'SelectAtMostOne' else 'select any'
+                        print(f'\n{group_name} ({label}):')
+                        for i, plugin in enumerate(available, start=1):
+                            description = plugin.findtext('description', default='').strip()
+                            marker = ' (recommended)' if plugin.attrib['name'] in defaults else ''
+                            print(f'  {i}) {plugin.attrib["name"]}{marker}')
+                            if description:
+                                print(f'     {description}')
 
-        new_choices[group_name] = plugins[int(choice) - 1].attrib['name']
+                        default_prompt = f'default {", ".join(defaults)}' if defaults else 'blank for none'
+                        while True:
+                            choice = input(f'Choices [1-{len(available)}, comma-separated, {default_prompt}]: ').strip()
+                            if not choice:
+                                picks = list(defaults)
+                                break
+
+                            indices = [part.strip() for part in choice.split(',')]
+                            if len(indices) <= limit and all(index.isdigit() and 1 <= int(index) <= len(available) for index in indices):
+                                picks = [available[int(index) - 1].attrib['name'] for index in indices]
+                                break
+
+                            if group_type == 'SelectAtMostOne':
+                                print(f'Please enter at most one number between 1 and {len(available)}.')
+                            else:
+                                print(f'Please enter numbers between 1 and {len(available)}, comma-separated.')
+
+                        chosen = picks
+
+            else:
+                remembered = old_choices.get(group_name)
+                if remembered in plugin_names:
+                    chosen = remembered
+                else:
+                    plugin_types = {plugin.attrib['name']: resolve_plugin_type(plugin, flags, data_files) for plugin in plugins}
+                    type_recommended = [i for i, plugin in enumerate(plugins, start=1) if plugin_types[plugin.attrib['name']] in ('Required', 'Recommended')]
+                    default_index = type_recommended[0] if len(type_recommended) == 1 else recommended_plugin_index(plugins, skyrim_version)
+
+                    print(f'\n{group_name}:')
+                    for i, plugin in enumerate(plugins, start=1):
+                        description = plugin.findtext('description', default='').strip()
+                        marker = ' (default)' if i == default_index else ''
+                        print(f'  {i}) {plugin.attrib["name"]}{marker}')
+                        if description:
+                            print(f'     {description}')
+
+                    prompt = f'Choice [1-{len(plugins)}]'
+                    if default_index is not None:
+                        prompt += f', default {default_index}'
+                    prompt += ': '
+
+                    while True:
+                        choice = input(prompt).strip()
+                        if not choice and default_index is not None:
+                            choice = str(default_index)
+
+                        if choice.isdigit() and 1 <= int(choice) <= len(plugins):
+                            break
+
+                        print(f'Please enter a number between 1 and {len(plugins)}.')
+
+                    chosen = plugins[int(choice) - 1].attrib['name']
+
+            new_choices[group_name] = chosen
+
+            chosen_set = set(chosen) if isinstance(chosen, list) else {chosen}
+            for plugin in plugins:
+                if plugin.attrib['name'] in chosen_set:
+                    for flag in plugin.findall('./conditionFlags/flag'):
+                        flags[flag.attrib['name']] = (flag.text or '').strip()
 
     return new_choices
 
 
-def calculate_fomod_targets(fomod_config, choices, paths):
+def calculate_fomod_targets(fomod_config, choices, paths, game_dir=None):
     """Take a parsed fomod config, chosen plugin names, and relative paths.
 
     Returns a list of src/dst pairs.
@@ -539,20 +676,56 @@ def calculate_fomod_targets(fomod_config, choices, paths):
             pairs.append((p, pathlib.Path('Data', *dest_parts, *p.parts[len(source_parts):])))
         return pairs
 
+    def matched_file(source, destination):
+        source_parts = tuple(part.lower() for part in pathlib.Path(source.replace('\\', '/')).parts)
+        dest_parts = pathlib.Path(destination.replace('\\', '/')).parts if destination else source_parts
+
+        for p in paths:
+            if tuple(part.lower() for part in p.parts) == source_parts:
+                return [(p, pathlib.Path('Data', *dest_parts))]
+        return []
+
     targets = []
+    flags = {}
+    data_files = installed_plugin_files(game_dir) if game_dir else frozenset()
 
     for folder in fomod_config.findall('./requiredInstallFiles/folder'):
         targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
 
-    for group in fomod_config.findall('./installSteps/installStep/optionalFileGroups/group'):
-        group_name = group.attrib['name']
-        chosen = choices[group_name]
-        chosen_names = chosen if isinstance(chosen, list) else [chosen]
-        chosen_plugins = [plugin for plugin in group.findall('./plugins/plugin') if plugin.attrib['name'] in chosen_names]
+    for file in fomod_config.findall('./requiredInstallFiles/file'):
+        targets += matched_file(file.attrib['source'], file.attrib.get('destination', ''))
 
-        for chosen_plugin in chosen_plugins:
-            for folder in chosen_plugin.findall('./files/folder'):
-                targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
+    for step in fomod_config.findall('./installSteps/installStep'):
+        visible = step.find('./visible/dependencies')
+        if visible is not None and not fomod_dependencies_met(visible, flags, data_files):
+            continue
+
+        for group in step.findall('./optionalFileGroups/group'):
+            group_name = group.attrib['name']
+            chosen = choices[group_name]
+            chosen_names = chosen if isinstance(chosen, list) else [chosen]
+            chosen_plugins = [plugin for plugin in group.findall('./plugins/plugin') if plugin.attrib['name'] in chosen_names]
+
+            for chosen_plugin in chosen_plugins:
+                for folder in chosen_plugin.findall('./files/folder'):
+                    targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
+
+                for file in chosen_plugin.findall('./files/file'):
+                    targets += matched_file(file.attrib['source'], file.attrib.get('destination', ''))
+
+                for flag in chosen_plugin.findall('./conditionFlags/flag'):
+                    flags[flag.attrib['name']] = (flag.text or '').strip()
+
+    for pattern in fomod_config.findall('./conditionalFileInstalls/patterns/pattern'):
+        dependencies = pattern.find('./dependencies')
+        if dependencies is None or not fomod_dependencies_met(dependencies, flags, data_files):
+            continue
+
+        for folder in pattern.findall('./files/folder'):
+            targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
+
+        for file in pattern.findall('./files/file'):
+            targets += matched_file(file.attrib['source'], file.attrib.get('destination', ''))
 
     return targets
 
@@ -581,7 +754,7 @@ def calculate_heuristic_targets(paths):
     targets += [(p, pathlib.Path('Data/') / p) for p in paths if p.full_match('SKSE/**')]
 
     # plugin/archive files loose in the root go into game_dir/Data
-    for ext in ('.esp', '.esl', '.bsa', '.bsl', '.ini'):
+    for ext in ('.esp', '.esl', '.esm', '.bsa', '.bsl', '.ini'):
         targets += [(p, pathlib.Path('Data') / p) for p in paths if p.full_match(f'*{ext}')]
 
     # any other top level directory is assumed to be Data-relative content shipped without the Data/ wrapper
