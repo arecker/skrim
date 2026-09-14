@@ -307,7 +307,7 @@ def package_unzipped_in_temp_dir(package_path):
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_dir = pathlib.Path(temp_dir)
 
-        if package_path.suffix == '.7z':
+        if package_path.suffix in ('.7z', '.rar'):
             with libarchive.file_reader(str(package_path)) as archive:
                 for entry in archive:
                     entry_path = pathlib.Path(entry.pathname)
@@ -450,12 +450,41 @@ def calculate_fomod_choices(fomod_config, old_choices, skyrim_version=None):
     new_choices = {}
 
     for group in fomod_config.findall('./installSteps/installStep/optionalFileGroups/group'):
-        if group.attrib['type'] != 'SelectExactlyOne':
+        if group.attrib['type'] not in ('SelectExactlyOne', 'SelectAny'):
             raise NotImplementedError(f'fomod group type not supported yet: {group.attrib["type"]}')
 
         group_name = group.attrib['name']
         plugins = group.findall('./plugins/plugin')
         plugin_names = [plugin.attrib['name'] for plugin in plugins]
+
+        if group.attrib['type'] == 'SelectAny':
+            remembered = old_choices.get(group_name)
+            if isinstance(remembered, list) and all(name in plugin_names for name in remembered):
+                new_choices[group_name] = remembered
+                continue
+
+            print(f'\n{group_name} (select any):')
+            for i, plugin in enumerate(plugins, start=1):
+                description = plugin.findtext('description', default='').strip()
+                print(f'  {i}) {plugin.attrib["name"]}')
+                if description:
+                    print(f'     {description}')
+
+            while True:
+                choice = input(f'Choices [1-{len(plugins)}, comma-separated, blank for none]: ').strip()
+                if not choice:
+                    picks = []
+                    break
+
+                indices = [part.strip() for part in choice.split(',')]
+                if all(index.isdigit() and 1 <= int(index) <= len(plugins) for index in indices):
+                    picks = [plugins[int(index) - 1].attrib['name'] for index in indices]
+                    break
+
+                print(f'Please enter numbers between 1 and {len(plugins)}, comma-separated.')
+
+            new_choices[group_name] = picks
+            continue
 
         remembered = old_choices.get(group_name)
         if remembered in plugin_names:
@@ -517,11 +546,13 @@ def calculate_fomod_targets(fomod_config, choices, paths):
 
     for group in fomod_config.findall('./installSteps/installStep/optionalFileGroups/group'):
         group_name = group.attrib['name']
-        chosen_name = choices[group_name]
-        chosen = next(plugin for plugin in group.findall('./plugins/plugin') if plugin.attrib['name'] == chosen_name)
+        chosen = choices[group_name]
+        chosen_names = chosen if isinstance(chosen, list) else [chosen]
+        chosen_plugins = [plugin for plugin in group.findall('./plugins/plugin') if plugin.attrib['name'] in chosen_names]
 
-        for folder in chosen.findall('./files/folder'):
-            targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
+        for chosen_plugin in chosen_plugins:
+            for folder in chosen_plugin.findall('./files/folder'):
+                targets += matched(folder.attrib['source'], folder.attrib.get('destination', ''))
 
     return targets
 

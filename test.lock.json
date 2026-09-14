@@ -191,6 +191,156 @@
     "fomod_choices": null
   },
   {
+    "mod_name": "cutting_room_floor",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/cutting room floor.modgroups",
+      "/home/deck/src/skrim/mocks/game_dir/Data/cutting room floor.esp",
+      "/home/deck/src/skrim/mocks/game_dir/Data/cutting room floor.bsa",
+      "/home/deck/src/skrim/mocks/game_dir/Data/cutting room floor - textures.bsa",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Docs/Cutting Room Floor.txt",
+      "/home/deck/src/skrim/mocks/game_dir/Data/BashTags/cutting room floor.txt",
+      "/home/deck/src/skrim/mocks/game_dir/Data/crf + bridges patch.esp"
+    ],
+    "fomod_choices": {
+      "Compatability Patches": [
+        "Skyrim Bridges"
+      ]
+    }
+  },
+  {
+    "mod_name": "environs_master_plugin",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs Master Plugin.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "environs_abandoned_abodes",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs - Abandoned Abodes.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "environs_greenwood_shack",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Greenwood Shack.esp/00000844.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Greenwood Shack.esp/00000843.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Greenwood Shack.esp/00000828.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/QF_ENVGreenwoodControlQuest_050332DA.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/ENVQuestSetVarMarker.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/ENVCheckVarSetStageNPCAliveMarker.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Seq/Environs - Greenwood Shack.seq",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/MaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008D5_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/MaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008D4_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/MaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008D3_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/MaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008D2_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008D1_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008D0_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008CF_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008CE_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleYoungEager/ENVGreenwo_ENVGreenwoodHel_000008CD_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleEvenToned/ENVGreenwo_ENVGreenwoodHel_000008C6_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleEvenToned/ENVGreenwo_ENVGreenwoodHel_000008C5_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleEvenToned/ENVGreenwo_ENVGreenwoodHel_000008C4_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Sound/Voice/Environs - Greenwood Shack.esp/FemaleEvenToned/ENVGreenwo_ENVGreenwoodHel_000008C3_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Source/Scripts/QF_ENVGreenwoodControlQuest_050332DA.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Source/Scripts/ENVQuestSetVarMarker.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Source/Scripts/ENVCheckVarSetStageNPCAliveMarker.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Greenwood Shack.esp/00000844.dds",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Greenwood Shack.esp/00000843.dds",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Greenwood Shack.esp/00000828.dds"
+    ],
+    "fomod_choices": {
+      "Main Files": "Default"
+    }
+  },
+  {
+    "mod_name": "environs_hroggars_house",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs - Hroggars House.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "environs_kolskeggr",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs - Kolskeggr.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "environs_riften_warehouse",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs - Riften Warehouse.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "environs_ruined_tundra_farmhouse",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Tundra Farmhouse.esp/00000A01.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Tundra Farmhouse.esp/000009D8.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Tundra Farmhouse.esp/000008E5.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Tundra Farmhouse.esp/000008C6.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Meshes/Actors/Character/FaceGenData/FaceGeom/Environs - Tundra Farmhouse.esp/00000818.NIF",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/QF_ENVTundraFHControllerQues_0500FD52.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Scripts/ENVTundraFHAttackStageEnable.pex",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Seq/Environs - Tundra Farmhouse.seq",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleOldGrumpy/ENVTundraF_ENVTundraFHHell_00000A43_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleOldGrumpy/ENVTundraF_ENVTundraFHHell_00000A42_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleOldGrumpy/ENVTundraF_ENVTundraFHHell_00000A41_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleOldGrumpy/ENVTundraF_ENVTundraFHHell_00000A40_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleOldGrumpy/ENVTundraF_ENVTundraFHHell_00000A3F_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleOldGrumpy/ENVTundraF_ENVTundraFHHell_00000A3E_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleCommonerAccented/ENVTundraF_ENVTundraFHHell_00000A49_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleCommonerAccented/ENVTundraF_ENVTundraFHHell_00000956_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleCommonerAccented/ENVTundraF_ENVTundraFHHell_00000955_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleCommonerAccented/ENVTundraF_ENVTundraFHHell_00000954_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleCommonerAccented/ENVTundraF_ENVTundraFHHell_00000951_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleChild/ENVTundraF_ENVTundraFHHell_0000096E_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleChild/ENVTundraF_ENVTundraFHHell_0000096D_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/MaleChild/ENVTundraF_ENVTundraFHHell_0000096C_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/FemaleOldKindly/ENVTundraF_ENVTundraFHHell_00000A46_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/FemaleOldKindly/ENVTundraF_ENVTundraFHHell_00000A45_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/FemaleOldKindly/ENVTundraF_ENVTundraFHHell_00000A44_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/FemaleEvenToned/ENVTundraF_ENVTundraFHHell_00000959_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/FemaleEvenToned/ENVTundraF_ENVTundraFHHell_00000958_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/sound/voice/Environs - Tundra Farmhouse.esp/FemaleEvenToned/ENVTundraF_ENVTundraFHHell_00000957_1.fuz",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Source/Scripts/QF_ENVTundraFHControllerQues_0500FD52.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Source/Scripts/ENVTundraFHAttackStageEnable.psc",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Tundra Farmhouse.esp/00000A01.dds",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Tundra Farmhouse.esp/000009D8.dds",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Tundra Farmhouse.esp/000008E5.dds",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Tundra Farmhouse.esp/000008C6.dds",
+      "/home/deck/src/skrim/mocks/game_dir/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Tundra Farmhouse.esp/00000818.dds"
+    ],
+    "fomod_choices": {
+      "Choose a main file": "Default Version"
+    }
+  },
+  {
+    "mod_name": "environs_shrines_of_talos",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs - Shrines of Talos.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "environs_western_watchtower",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Environs - Whiterun Watchtower.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
+    "mod_name": "skyrim_bridges",
+    "targets": [
+      "/home/deck/src/skrim/mocks/game_dir/Data/Skyrim Bridges.esp"
+    ],
+    "fomod_choices": null
+  },
+  {
     "mod_name": "achievements_mods_enabler",
     "targets": [
       "/home/deck/src/skrim/mocks/game_dir/Data/Plugins/Sumwunn/AchievementsModsEnabler.ini",

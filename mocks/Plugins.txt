@@ -1,6 +1,16 @@
 # This file is used by Skyrim to keep track of your downloaded content.
 # Please do not modify this file.
 *unofficial skyrim special edition patch.esp
+*cutting room floor.esp
+*crf + bridges patch.esp
+*Environs Master Plugin.esp
+*Environs - Abandoned Abodes.esp
+*Environs - Hroggars House.esp
+*Environs - Kolskeggr.esp
+*Environs - Riften Warehouse.esp
+*Environs - Shrines of Talos.esp
+*Environs - Whiterun Watchtower.esp
+*Skyrim Bridges.esp
 *alternate start - live another life.esp
 *Alternate Start -- New Beginnings.esp
 *SkyUI_SE.esp
