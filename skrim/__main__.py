@@ -4,6 +4,7 @@ import argparse
 import collections
 import configparser
 import contextlib
+import hashlib
 import json
 import libarchive
 import logging
@@ -47,15 +48,36 @@ def main():
         pave_installations(installations=installs)
         return
 
-    # completely delete old install!
-    pave_installations(installations=installs)
+    installs_by_name = {installation.mod_name: installation for installation in installs}
+    config_mod_names = {mod.name for mod in mods}
+
+    # mods that used to be installed but were dropped from the config: pave them
+    dropped = [installation for name, installation in installs_by_name.items() if name not in config_mod_names]
+    if dropped:
+        pave_installations(installations=dropped)
 
     # start collecting a list for the new lock file
     new_installs = []
 
     try:
         for i, mod in enumerate(mods):
-            logger.info('installing [%s] (%d/%d)', mod.name, i + 1, len(mods))
+            old_install = installs_by_name.get(mod.name)
+            package_hash = hash_package(pathlib.Path(config.downloads_dir) / mod.filename)
+
+            if old_install is not None and old_install.package_hash == package_hash:
+                if all(pathlib.Path(target).is_file() for target in old_install.targets):
+                    logger.info('skipping [%s] (%d/%d), unchanged and all targets present', mod.name, i + 1, len(mods))
+                    new_installs.append(old_install)
+                    continue
+                logger.info('reinstalling [%s] (%d/%d), unchanged but missing targets', mod.name, i + 1, len(mods))
+            else:
+                logger.info('installing [%s] (%d/%d)', mod.name, i + 1, len(mods))
+                if old_install is not None:
+                    # package changed since last install: pave the old files and
+                    # reprompt any fomod choices instead of reusing stale ones
+                    pave_installations(installations=[old_install])
+                    old_fomod_choices.pop(mod.name, None)
+
             install = install_mod(mod, config.downloads_dir, config.game_dir, old_fomod_choices.get(mod.name), skyrim_version)
             new_installs.append(install)
             logger.info('copied %d file(s) to game directory', len(install.targets))
@@ -92,6 +114,7 @@ Installation = collections.namedtuple('Installation', [
     'mod_name',  # mod name from config
     'targets',  # list of absolute paths
     'fomod_choices',  # dict of group name -> chosen plugin name, or None
+    'package_hash',  # sha256 hex digest of the downloaded package at install time
 ])
 
 
@@ -307,6 +330,18 @@ def pave_installations(installations):
             target_path.unlink(missing_ok=True)
 
 
+def hash_package(package_path):
+    """Return the sha256 hex digest of the file at `package_path`."""
+
+    digest = hashlib.sha256()
+
+    with pathlib.Path(package_path).open('rb') as f:
+        for block in iter(lambda: f.read(1 << 20), b''):
+            digest.update(block)
+
+    return digest.hexdigest()
+
+
 @contextlib.contextmanager
 def package_unzipped_in_temp_dir(package_path):
     """Extract `package_path` into a temp dir, yielding the temp dir as a `pathlib.Path`."""
@@ -343,7 +378,13 @@ def package_unzipped_in_temp_dir(package_path):
                             logger.warning('ignoring libarchive CRC mismatch for [%s]: got all %d expected bytes anyway', entry.pathname, entry.size)
         else:
             with zipfile.ZipFile(package_path) as archive:
-                archive.extractall(temp_dir)
+                # the zip spec requires '/' as the separator, but some Windows-built
+                # archives (e.g. hand-patched mod zips) store entries with '\' instead.
+                # zipfile treats those literally on POSIX, producing a single garbled
+                # filename instead of nested dirs, so normalize before extracting.
+                for info in archive.infolist():
+                    info.filename = info.filename.replace('\\', '/')
+                    archive.extract(info, temp_dir)
 
         # if there is just one directory in the package, then "cd"
         # into it and treat it like the root.  unless that directory is
@@ -368,6 +409,7 @@ def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None, skyrim_ver
     """Installs the mod from the package."""
 
     package_path = pathlib.Path(downloads_dir) / mod.filename
+    package_hash = hash_package(package_path)
 
     logger.info('unpacking [%s]', mod.name)
 
@@ -400,7 +442,7 @@ def install_mod(mod, downloads_dir, game_dir, old_fomod_choices=None, skyrim_ver
             raise
 
     # return it as an installation
-    return Installation(mod_name=mod.name, targets=[str(t) for t in copied], fomod_choices=fomod_choices)
+    return Installation(mod_name=mod.name, targets=[str(t) for t in copied], fomod_choices=fomod_choices, package_hash=package_hash)
 
 
 def load_fomod_config(temp_dir, paths):

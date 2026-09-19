@@ -130,7 +130,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/ActiveMagicEffect.psc",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/src/skse64-2.3.1.tar.gz"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "7bad616ed360823a027f8828801d91e3a4aa2eacd952023af7f3e31adb2ae250"
   },
   {
     "mod_name": "address_library",
@@ -160,7 +161,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-317-0.bin",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/versionlib-1-6-318-0.bin"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "be0c7c07fb63fd1c1403690d4797c7a8fdf8799118acceb605f285d7b0ee055f"
   },
   {
     "mod_name": "engine_fixes",
@@ -173,7 +175,8 @@
     ],
     "fomod_choices": {
       "DLL": "SSE v1.6.1170 (\"Anniversary Edition\")"
-    }
+    },
+    "package_hash": "b6de89ec76d426e2f9701dce0cba44dd07619abe1ed885bfafd34cceb3225744"
   },
   {
     "mod_name": "actor_limit_fix",
@@ -183,7 +186,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/ActorLimitFix.json",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/ActorLimitFix.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "bc88900ee70fa2a78d2ed7c9e1477e81238cba6a4c535f48c2b6f14d32800222"
   },
   {
     "mod_name": "face_discoloration_fix",
@@ -191,7 +195,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/FaceGenFixes.pdb",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/FaceGenFixes.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "718260ca396905f5dad057325504c6e472fdc2d78c2af866dcef6929badbd9d8"
   },
   {
     "mod_name": "remember_lockpick_angle",
@@ -199,7 +204,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/RememberLockpickAngle.ini",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/RememberLockpickAngle.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "2cb926d5444eca42420aa74704d60dbdd1ec07f91b3276233a36c22c1c8d1c6a"
   },
   {
     "mod_name": "powerofthree_tweaks",
@@ -211,7 +217,8 @@
     ],
     "fomod_choices": {
       "DLL": "SSE/AE v1.7.99+ (\"Anniversary/Special Edition\")"
-    }
+    },
+    "package_hash": "5aeadd195dce06e3d72d7684373bab9116f8eadf3833af5cdf45c0d2ad4f9268"
   },
   {
     "mod_name": "dllloader",
@@ -219,7 +226,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/DINPUT8.dll",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Plugins/Sumwunn/DllLoader.ini"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "e510561f22cc47c4730daa7ce99d5622fd93cf233ae5e7ac98650d64fbad6347"
   },
   {
     "mod_name": "crash_logger",
@@ -228,7 +236,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/CrashLogger.pdb",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/CrashLogger.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "ce8592d60a2394bc05874d4cc759d3513686c3e26f841fe831a98c9d66fa979c"
   },
   {
     "mod_name": "open_shaders",
@@ -4171,7 +4180,8 @@
       "Prebuilt Shader Cache (optional, skips first-launch compile)": [
         "SE/AE"
       ]
-    }
+    },
+    "package_hash": "f4b73a1430782a217abd9719b51e0f7e18afa9958191deea97f8c6e9041f9b65"
   },
   {
     "mod_name": "ussep",
@@ -4184,7 +4194,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Unofficial Skyrim Special Edition Patch Readme + Credits.html",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/BashTags/unofficial skyrim special edition patch.txt"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "008f594d90650a27d36dae93f205681cfa4114a674ff55e26b1128666fcb4fb4"
   },
   {
     "mod_name": "unofficial_cc_content_patches",
@@ -4384,7 +4395,8 @@
         "Unofficial Vigil Enforcer Armor Set Patch",
         "Unofficial Wild Horses Patch"
       ]
-    }
+    },
+    "package_hash": "09eb5bee7fa951fab142aa656cf70cc7e6d0d514059dad36f0c3c6ffe6ae4133"
   },
   {
     "mod_name": "waccf",
@@ -4403,7 +4415,8 @@
       "Bashed Patch": [],
       "Documentation": "Documentation",
       "Credits": "Credits"
-    }
+    },
+    "package_hash": "7588af48b7b82ab849c83c934d159a2ddb63769a17509f2e64468c081dffc4e1"
   },
   {
     "mod_name": "cutting_room_floor",
@@ -4420,7 +4433,8 @@
       "Compatability Patches": [
         "Skyrim Bridges"
       ]
-    }
+    },
+    "package_hash": "5a007881a7239bdb2e71e7803b0435c0d882ddfe2d47390254252aedf14a3911"
   },
   {
     "mod_name": "no_snow_under_the_roof",
@@ -4428,7 +4442,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Prometheus_No_snow_Under_the_roof.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Prometheus_No_snow_Under_the_roof.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "875e216025fd83582477b40dfe9cac84a5159a84a4f8a65077da7053d73eda4c"
   },
   {
     "mod_name": "no_snow_under_the_roof_crf_patch",
@@ -4437,7 +4452,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/prometheus/architecture/farmhousesnow/clutter signage/signheljarchenblacksmith01_snow.nif",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/prometheus/architecture/farmhousesnow/clutter signage/signheljarchenalchemyshop01_snow.nif"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "e31601364d25b12e2c0285d10c9fb706e208fa0d5bec3850305e00e4c506d38d"
   },
   {
     "mod_name": "environs_master_plugin",
@@ -4488,7 +4504,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/Scripts/ENVCheckVarEnableObjectsMarker.psc",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/Scripts/ENVCheckVarEnableObjects.psc"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "c6ab83b2ad5efbcd731544a38064a892f0b675f535e314b04fbb5523f5ac8c07"
   },
   {
     "mod_name": "environs_abandoned_abodes",
@@ -4738,7 +4755,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/ENV/smim/clutter/signage/metalwork01_brown_n.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/ENV/smim/clutter/signage/metalwork01_brown.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "51c1618abf014801a93042462a3641a9f8132bce3f81c97d716eec5bfae1e514"
   },
   {
     "mod_name": "environs_greenwood_shack",
@@ -4773,7 +4791,8 @@
     ],
     "fomod_choices": {
       "Main Files": "Default"
-    }
+    },
+    "package_hash": "60c3fec9cd3818459e56c04528df2a85247245ca38f6bd2ae6a807084d7ceea4"
   },
   {
     "mod_name": "environs_hroggars_house",
@@ -4817,7 +4836,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/Scripts/QF_ENVHroggarsHouseControlQu_0620A196.psc",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/Scripts/ENVHroggarsHouseEisaQuestCheck.psc"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "3238ebd1c62ce3b82b568196467ec0f5670452542df5298facc586f44baa12e6"
   },
   {
     "mod_name": "environs_kolskeggr",
@@ -4859,7 +4879,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Kolskeggr.esp/000008EF.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Kolskeggr.esp/000008E3.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "d3d2511f5b3d08d61b94b77c69148990ed41a710b8b387c00d7487507638abbe"
   },
   {
     "mod_name": "environs_riften_warehouse",
@@ -4912,7 +4933,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Riften Warehouse.esp/00000A48.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Riften Warehouse.esp/00000804.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "19c0bd55719edd473341c1a3703eb7473d1a4ad5598d5a3f60a446bc28427720"
   },
   {
     "mod_name": "environs_ruined_tundra_farmhouse",
@@ -4956,7 +4978,8 @@
     ],
     "fomod_choices": {
       "Choose a main file": "Default Version"
-    }
+    },
+    "package_hash": "70ef7b7f0befe1ac26e84e604cec48ca2a28da20377eec0dccb20048b1492266"
   },
   {
     "mod_name": "environs_shrines_of_talos",
@@ -5068,7 +5091,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Shrines of Talos.esp/0000080A.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Shrines of Talos.esp/00000808.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "8574c060c6a628c1a22b71e0029713ff482e9ab51ed40486245aaa3c51d1e146"
   },
   {
     "mod_name": "environs_western_watchtower",
@@ -5089,14 +5113,16 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Whiterun Watchtower.esp/00000916.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/Actors/Character/FaceGenData/FaceTint/Environs - Whiterun Watchtower.esp/00000915.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "e1d12e3c8c0e5b760b4ee590e777f3db09de98287f8574df4065e24b0583404e"
   },
   {
     "mod_name": "skyrim_bridges",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Skyrim Bridges.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "36bca824db3eb626b5a92b73bbb817f5c75c55d4d353730fc902cee3e856ba0e"
   },
   {
     "mod_name": "noble_skyrim",
@@ -6191,7 +6217,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/landscape/dirtcliffs/dirtcliffs01mask.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/landscape/dirtcliffs/dirtcliffs01.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "879b10d472c141fcf35731116114f800ff6ee3c17d389f5ad6884ced2dfcd4db"
   },
   {
     "mod_name": "the_eyes_of_beauty",
@@ -6397,7 +6424,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/actors/Character/eyes/eyeargonianambermale.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/actors/Character/eyes/eyeambre.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "19abf95ab96e5ce8aee1633a5c7dd56f43e197404801228ffbd23852e8edd34c"
   },
   {
     "mod_name": "happy_little_trees",
@@ -6587,7 +6615,8 @@
       "Trees": "All Trees",
       "Add on": [],
       "Snowy Pine Textures": "Alternate 3"
-    }
+    },
+    "package_hash": "130f99116ac53ad424b9cf845a122f03014f20e241283fffbdb9a0ccae347db1"
   },
   {
     "mod_name": "smim",
@@ -8142,7 +8171,8 @@
     ],
     "fomod_choices": {
       "Skyrim Game Version and Install Choices": "Skyrim 2016 Special Edition: Everything"
-    }
+    },
+    "package_hash": "bb6c3bb5b3f7a8aeefbc14098e3265d272e7f454a98f89eac3059a3f0cc60300"
   },
   {
     "mod_name": "rustic_clothing",
@@ -8646,14 +8676,16 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/dlc02/clothes/cultist/cultist outfit_body_n.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/dlc02/clothes/cultist/cultist outfit_body_d.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b83cd2dc7ad2e5d01daa9c26bb4c61e3bf5ebeb44183499ceda45de72d334e64"
   },
   {
     "mod_name": "barenziah_quest_markers",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/BarenziahQuestMarkers.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b238817f7e0c2649453f9a92be00c13340d8a8817af543f5ea2bbe86e1f424e6"
   },
   {
     "mod_name": "bandit_lines_expansion",
@@ -9192,7 +9224,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Sound/Voice/Bandit Lines Expansion.esp/FemaleCommoner/BanditLine_BLE_BanditAttac_00000820_1.fuz",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Sound/Voice/Bandit Lines Expansion.esp/FemaleCommoner/BanditLine_BLE_AllyKilled_0000097F_1.fuz"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "87f4a853c6b9a9440662ff39e7bb000a1e69a955c239a99791d746c06e7a1bea"
   },
   {
     "mod_name": "hearthfire_multiple_adoptions",
@@ -9202,7 +9235,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/HearthfireMultiKid.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/HearthfireMultiKid.bsl"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "bd44097988a9c33274063335665e7f6e46977cc9ec54c043efbe789ddbce077f"
   },
   {
     "mod_name": "holidays",
@@ -9211,7 +9245,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Holidays.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Holidays - Textures.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "8182bebe023b18a5b4e0b33cc2982cbaa86e1dad57254ac48e8b16a05b484247"
   },
   {
     "mod_name": "opulent_thieves_guild",
@@ -9219,7 +9254,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/OpulentThievesGuild.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/OpulentThievesGuild.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b43a4a5edf2e685d8a7a32eb46b7d15b5c2c484e9e16b746b12841b7f3f1bdf7"
   },
   {
     "mod_name": "point_the_way",
@@ -9228,7 +9264,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/point the way.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/point the way - textures.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "19fbc9f1e5cc6ebc9f81ebfad170801cf549fb8a734e7a84b4046ba6e1bdc68a"
   },
   {
     "mod_name": "quick_light",
@@ -9255,7 +9292,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/magic/QuickLight/QuickLightFX_Magic.nif",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/magic/QuickLight/QuickLightFX.nif"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "5d588225754ac616a5a4691a4917cbc2ea7e6eedbab2f292aa07f748243ebce9"
   },
   {
     "mod_name": "the_paarthurnax_dilemma",
@@ -9263,7 +9301,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/the paarthurnax dilemma.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/the paarthurnax dilemma.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "436986f87ab7c3ca78f3b1482449670f7a08886b31d5bad78f78920ac87b2115"
   },
   {
     "mod_name": "achievements_mods_enabler",
@@ -9273,7 +9312,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Plugins/Sumwunn/AchievementsModsEnabler.dll",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AchievementsModsEnablerLoader.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "c3a81fb012f241b5c6385bad54a1bc526f8928f9eab744ba5616a99462c72d12"
   },
   {
     "mod_name": "alternate_start",
@@ -9283,7 +9323,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/alternate start - live another life - textures.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/alternate start - live another life.ini"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "5d4abc988f28e439ce47650b80b14c0c330f83a9222c4d9b4b4e92fff52ec7f7"
   },
   {
     "mod_name": "alternate_start_new_beginnings",
@@ -9291,7 +9332,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Alternate Start -- New Beginnings.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Alternate Start -- New Beginnings.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "7525fc4752dbfd65ce8ab5f9a4ca5f5bdb1c967c80220c709d7534b60228a374"
   },
   {
     "mod_name": "skyui",
@@ -9299,21 +9341,15 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SkyUI_SE.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SkyUI_SE.bsa"
     ],
-    "fomod_choices": null
-  },
-  {
-    "mod_name": "infinity_ui",
-    "targets": [
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InfinityUI.ini",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InfinityUI.dll"
-    ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1"
   },
   {
     "mod_name": "infinity_ui_ae_patch",
     "targets": [
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/SKSE\\Plugins\\InfinityUI.dll",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE\\Plugins\\InfinityUI.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InfinityUI.pdb",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InfinityUI.ini",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InfinityUI.dll",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Infinity UI/THIRD_PARTY_NOTICES.md",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Infinity UI/NOTICE.md",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Infinity UI/LICENSE",
@@ -9329,17 +9365,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Infinity UI/licenses/CommonLibSSE-NG-GPL-3.0-or-later.txt",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Infinity UI/licenses/CommonLibSSE-NG-EXCEPTIONS.md"
     ],
-    "fomod_choices": null
-  },
-  {
-    "mod_name": "compass_navigation_overhaul",
-    "targets": [
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/CompassNavigationOverhaul.ini",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/CompassNavigationOverhaul.dll",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Interface/InfinityUI/HUDMenu/HUDMovieBaseInstance/QuestItemList.swf",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Interface/InfinityUI/HUDMenu/HUDMovieBaseInstance/CompassShoutMeterHolder/Compass.swf"
-    ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "f93f1a6353404a887b6be1e31372c673d872b3d76b77288f5edd43bb835fbfd2"
   },
   {
     "mod_name": "compass_navigation_overhaul_ae_patch",
@@ -9373,7 +9400,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Compass Navigation Overhaul/licenses/CommonLibSSE-NG-GPL-3.0-or-later.txt",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/Compass Navigation Overhaul/licenses/CommonLibSSE-NG-EXCEPTIONS.md"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "1f455b4bf3a230e0952d74affd888ff782370d029e32306491b7131f8200344d"
   },
   {
     "mod_name": "experience",
@@ -9392,7 +9420,8 @@
     "fomod_choices": {
       "Plugin version": "AE v1.7.104+",
       "Aspect ratio": "16:9"
-    }
+    },
+    "package_hash": "08eb31816378dd62faf477a8133392279a3d4eb442c51783d6061d3fa7047b3a"
   },
   {
     "mod_name": "better_jumping",
@@ -9400,7 +9429,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/BetterJumpingSE.txt",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/BetterJumpingSE.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "84f7777ccea8749abdbc3401596f403518f7baf0b379256a7cc8b5ae130f0472"
   },
   {
     "mod_name": "instantly_skip_dialogue",
@@ -9409,7 +9439,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InstantlySkipDialogueSKSE.ini",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/InstantlySkipDialogueSKSE.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "2e2f206bd902eb502a2b72aecca6c9277818f7dd006469d548e5882efd4e2f26"
   },
   {
     "mod_name": "sound_record_distributor",
@@ -9420,7 +9451,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor/EXCEPTIONS.md",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SoundRecordDistributor/COPYING"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "44066a73dd6ef5a62a181602db3d1ee7d2966621f19087c6014f2b3319e554d3"
   },
   {
     "mod_name": "audio_overhaul_for_skyrim",
@@ -9460,7 +9492,8 @@
       ],
       "Mods": [],
       "Thank You!": "Thank You!"
-    }
+    },
+    "package_hash": "49c115916e610c7cd7b6b2227aaa43346151d7c60e47161e18190ada20acdbb8"
   },
   {
     "mod_name": "immersive_citizens_ai_overhaul",
@@ -9475,7 +9508,8 @@
       "Open Cities Skyrim": [],
       "Enhanced Lights and FX": [],
       "Enhanced Lighting for ENB": []
-    }
+    },
+    "package_hash": "e9ad95ec93111da7ede575dc44908ea07b3c80afc9d5fb15068461273337818a"
   },
   {
     "mod_name": "mcm_helper",
@@ -9493,7 +9527,8 @@
       "Game Version": "Skyrim Special Edition",
       "Plugin": "ESL",
       "Resources": "BSA"
-    }
+    },
+    "package_hash": "505af9c27062febd497be09b661d5df82e013ae4a205ffbec99698adf4503f52"
   },
   {
     "mod_name": "spell_perk_item_distributor",
@@ -9501,7 +9536,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/po3_SpellPerkItemDistributor.dll",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/po3_SpellPerkItemDistributor.pdb"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71"
   },
   {
     "mod_name": "animation_queue_fix",
@@ -9509,7 +9545,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AnimationQueueFix.dll",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AnimationQueueFix.pdb"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b2deff34aa462d5d439f56fe5ed86b32028e959ed02d361cacdc51504bab1b89"
   },
   {
     "mod_name": "simple_dual_sheath",
@@ -9517,7 +9554,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SimpleDualSheath.ini",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SimpleDualSheath.dll"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "e8370fac03d94604bd836482e078aa8fd5a18bc45a782070efdbd7a0ad3e3c93"
   },
   {
     "mod_name": "security_overhaul_lock_variations",
@@ -9548,7 +9586,8 @@
     "fomod_choices": {
       "Textures": "2K Textures",
       "DLL": "SSE/AE v1.7.99+ (\"Anniversary/Special Edition\")"
-    }
+    },
+    "package_hash": "12a3f85ebd87a0c6bbfb908af55f7747f4335efa2b7b23100adc78b40b4d185f"
   },
   {
     "mod_name": "security_overhaul_addons",
@@ -9579,7 +9618,8 @@
     ],
     "fomod_choices": {
       "Textures": "2K Textures"
-    }
+    },
+    "package_hash": "8304cb49dc72161a543b6b49ea62c8598a0f93e375d54e36e509af4ddb708cf8"
   },
   {
     "mod_name": "security_overhaul_regional_locks",
@@ -9624,7 +9664,8 @@
     ],
     "fomod_choices": {
       "Textures": "2K Textures"
-    }
+    },
+    "package_hash": "7c717a91a19417f482cfa3c4392ceb09b68d8562d790c09fc6e3e70198fc7d29"
   },
   {
     "mod_name": "security_overhaul_extra_locks",
@@ -9676,7 +9717,8 @@
     ],
     "fomod_choices": {
       "Texture Resolution": "2K"
-    }
+    },
+    "package_hash": "0d98682ab26816d0c0a9264b0bf13f8b724fb3158b51b9ac8114a5344dadb0e4"
   },
   {
     "mod_name": "ordinator",
@@ -9685,7 +9727,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Ordinator - Perks of Skyrim - Textures.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Ordinator - Perks of Skyrim.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b25314839e9f52e1a2c20dae96d224b4f4cf07345acee0a8b55dd11d687c3c99"
   },
   {
     "mod_name": "apocalypse",
@@ -9694,14 +9737,16 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Apocalypse - Magic of Skyrim - Textures.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Apocalypse - Magic of Skyrim.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "738181f46eb4e6bdcdfc9da9093972454a2a6e16c354c627a4ceef9bd1894848"
   },
   {
     "mod_name": "apocalypse_ordinator_patch",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Apocalypse - Ordinator Compatibility Patch.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "8d61d5056fe525db200d7db3a4a3f6327416faaab42ad88ed3b54abcbc9db02b"
   },
   {
     "mod_name": "thunderchild",
@@ -9710,7 +9755,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Thunderchild - Epic Shout Package.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Thunderchild - Epic Shout Package - Textures.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "e1f8be5a6a6bc523dba9272f835e869f9f756281c16c736b9f863d062f608837"
   },
   {
     "mod_name": "leanwolfs_better_shaped_weapons",
@@ -9972,7 +10018,8 @@
       "Dawnbreaker ENB Option": [],
       "Dragonbone Options": [],
       "Left-hand Meshes": "Dual Sheath Meshes"
-    }
+    },
+    "package_hash": "ba57c536f38ded87d12c9e28c80116b1cd99a46d13e8fb727e7d8daf4120a983"
   },
   {
     "mod_name": "realistic_ragdolls_and_force",
@@ -10002,14 +10049,16 @@
     "fomod_choices": {
       "Force": "High",
       "Ragdolls": "All"
-    }
+    },
+    "package_hash": "71d7e2fe89a26ca760c2a068783de5e495d93952f7a82fcb123d3cbbb6f88a0e"
   },
   {
     "mod_name": "no_bs_ai_projectile_dodge",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/NoBSAIProjectileDodge.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "0868dfbc63cc8302adf1d376b2d5040359a2225d3e712d5d840aeae5e17e9504"
   },
   {
     "mod_name": "deadly_spell_impacts",
@@ -10038,7 +10087,8 @@
       "Fire Impacts": "Charred (Default)",
       "Frost Impacts": "Default",
       "Lightning": "Default"
-    }
+    },
+    "package_hash": "b26a595ce058de16dc924a24d4df385fddea7e51813306c99163596da9809383"
   },
   {
     "mod_name": "immersive_college_of_winterhold",
@@ -10166,14 +10216,16 @@
         "Ordinator - Perks Of Skyrim SSE Patch"
       ],
       "FaceGen": []
-    }
+    },
+    "package_hash": "bc1a91150e0eb0dedba5d325b8c33746904a9b68244b7480c4b6afa55c97b99a"
   },
   {
     "mod_name": "immersive_patrols",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Immersive Patrols II.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "4a80fd0c46e3344eaf72a85956fe38a7272d783ce32376513a8db7e44c71d678"
   },
   {
     "mod_name": "run_for_your_lives",
@@ -10182,7 +10234,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/run for your lives.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/run for your lives - textures.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "127a66369049342f1e0d50fdce599c548c5c293a2a858f4328abf3814d65e88e"
   },
   {
     "mod_name": "guard_dialogue_overhaul",
@@ -10190,7 +10243,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Guard Dialogue Overhaul.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Guard Dialogue Overhaul.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "59e20cb7c0e7eedf3d821f19a9c471bcb1f6aca21a5503b62d4a6815f4711455"
   },
   {
     "mod_name": "relationship_dialogue_overhaul",
@@ -10198,7 +10252,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Relationship Dialogue Overhaul.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Relationship Dialogue Overhaul.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "99988d898c1356e37341a44ed95e8ed0b15bcefcf7626f797d5bd04b9388d5f2"
   },
   {
     "mod_name": "rich_skyrim_merchants",
@@ -10208,7 +10263,8 @@
     "fomod_choices": {
       "Gold Multiplier": "5x More Gold",
       "Perk Changes": "Yes"
-    }
+    },
+    "package_hash": "c734c12dc59a40634970e68cd80827040aea32d6dde5c8976d1c8f3ff6db5921"
   },
   {
     "mod_name": "morningstar",
@@ -10216,7 +10272,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Morningstar - Minimalistic Races of Skyrim.esl",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Morningstar - Minimalistic Races of Skyrim.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "2e7ee130a05d11bee55dde316f57109e34a635ec31c0ea0560d60b0199bf6627"
   },
   {
     "mod_name": "gildergreen_fix",
@@ -10227,7 +10284,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/Scripts/SKtreeswap.psc",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/Scripts/SKSapplingSwap.psc"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "52393de43c812b810db6aedabed9f101a72afd3c82fb4e2ed65881445249a06d"
   },
   {
     "mod_name": "sleeping_expanded",
@@ -10519,7 +10577,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/actors/character/animations/DynamicAnimationReplacer/_CustomConditions/4386/bedroll_leftexit.hkx",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/actors/character/animations/DynamicAnimationReplacer/_CustomConditions/4386/bedroll_frontexit.hkx"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "0599dbacbd8e1278f391825cc0ca8329f06f8c6f2832b668dded98d67a3144a6"
   },
   {
     "mod_name": "use_those_blankets",
@@ -10607,7 +10666,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/scripts/DisableBlankets.psc",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/scripts/BedRollForNPCs.psc"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "1580406ef4a14cafb40d32a3fcd607665c1870b751bbef53f9733aba16cf38fb"
   },
   {
     "mod_name": "follower_trap_safety",
@@ -10616,7 +10676,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/TrapCheckFollower.pex",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/TrapBear.pex"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "b83ea27edeb833a997126961c13d09ac23d285c7700bff12753db42a821a3386"
   },
   {
     "mod_name": "extended_encounters",
@@ -10996,21 +11057,24 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/ee_bardplay.psc",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Source/ee_assassinate.psc"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "4171bf2889a9d72e023965bd6be27e4e8583af8db16096c71c423752bc222858"
   },
   {
     "mod_name": "unlimited_training",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Unlimited Training.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "3a5f449099ce8129c4c4b007472c4e437fe1b8938086cd86a0f56eb7900c4971"
   },
   {
     "mod_name": "unlimited_sprinting",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Unlimited Sprinting.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "7975b0d23113a281286a3197b143588fac1a378079bec7890747120a5dd96ce7"
   },
   {
     "mod_name": "unread_books_glow",
@@ -11019,7 +11083,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/UnreadBooksGlow.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/UnreadBooksGlow.bsl"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "bc8ee13f65741e11389520e6729aa68be7a6c303dce1a09caee448869b00ca13"
   },
   {
     "mod_name": "cathedral_3d_mountain_flowers",
@@ -11053,7 +11118,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/landscape/grass/ColumbineSnow.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/landscape/grass/Columbine.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "0f8c698100b770fc1a70dc1b1efed7d821b355e34b071c64086f2002b15dd181"
   },
   {
     "mod_name": "cathedral_water",
@@ -11062,7 +11128,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/water/riverflow.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/water/defaultwater.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "da5666e45176a8178d8f8e2dcf3169f5400b37bf35b46625af59fbc5be5f8dc2"
   },
   {
     "mod_name": "cathedral_weathers",
@@ -11073,7 +11140,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meta.ini",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Cathedral Weathers.ini"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "f98ace952d44a2a533f17fb139c956d9683ee2273dd7b382d7d563cc4244d603"
   },
   {
     "mod_name": "landscapes_cathedral_concept",
@@ -11502,7 +11570,8 @@
       "Choose Plugin Type": "Use fat ESP (recommended for compatibility)",
       "Select Install": "Full Install, Brown Tundra",
       "Select Roads": "Blended Roads"
-    }
+    },
+    "package_hash": "027d7683ba543d8ec18bfa91ab0a9d610ef07927486fe63128fc42898afb4947"
   },
   {
     "mod_name": "daedric_shrines_all_in_one",
@@ -11580,7 +11649,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/man_azura/azura_m.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/textures/man_azura/azura_d.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "8c2a3089ec8e8cabe1d592dbc01314eb53a1887ba5c2db93b4f146063cdc042a"
   },
   {
     "mod_name": "book_covers_skyrim_desaturated",
@@ -11589,7 +11659,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Book Covers Skyrim.bsa",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Book Covers Skyrim - Textures.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "22e456b3d321a5350dd5eb3dfb4c9ff30e9ca0b7d1e2327c3f4936d52c8e7be7"
   },
   {
     "mod_name": "skyrim_is_luminous",
@@ -11599,7 +11670,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SIL - Ominous.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SIL - Nightmare.esp"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "050b079b173f62dafd12b23e900ec2a3ac2f09e61da230e2dcf2ad93347abd4b"
   },
   {
     "mod_name": "vanilla_hair_remake",
@@ -12080,7 +12152,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/actors/character/character assets/hair/khajiit/female/hair02.nif",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/actors/character/character assets/hair/khajiit/female/hair01.nif"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "fd06a5ed60cb891b0ef51b863dc29433e01d078e01cdbe23d04d0ca33d0b34d2"
   },
   {
     "mod_name": "hvergelmirs_beards",
@@ -12099,7 +12172,8 @@
     "fomod_choices": {
       "Choose full or vanilla replacer": "Full install",
       "Choose resolution": "Low: 1024"
-    }
+    },
+    "package_hash": "fc664229d132c4bbdd8e66cca83cb73cac32db3821234e41c308ed169ac6ac83"
   },
   {
     "mod_name": "footprints",
@@ -12107,7 +12181,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Footprints.esp",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Footprints.bsa"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "1d41c842746cbc5ccadf039832c3f2b0f49763a5cf43ded37427a9e7bc89ce93"
   },
   {
     "mod_name": "blended_roads",
@@ -12232,7 +12307,8 @@
       "SMIM Compatibility Patch": [
         "Blended Roads"
       ]
-    }
+    },
+    "package_hash": "4d906431a2219a47819b7fb05157f857dcd0209fc23bf2c86a077aa95b323c44"
   },
   {
     "mod_name": "quality_world_map_classic_all_roads",
@@ -12242,7 +12318,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/icepenguinworldmapclassic.ini",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/readmes/IcePenguinWorldMapReadme.txt"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "d0ebd043fd55d1f8b38bed8d69f0e4ef8bd4a03e81045484489e62ae2bb16f66"
   },
   {
     "mod_name": "quality_world_map_clear_map_skies",
@@ -12255,7 +12332,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/sky/superfluffycloudmap01.dds",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Textures/sky/superfluffycloudlut.dds"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "1759569bb80851b2fe6bb4e40e91c4f4519aedd4a3ff93ce2ef5badf43d1628c"
   },
   {
     "mod_name": "ruins_clutter_improved",
@@ -12792,7 +12870,8 @@
       "Lantern": [],
       "Canopic Jars": [],
       "Soulcairn": []
-    }
+    },
+    "package_hash": "19a04cf9d65651ac06b179d2c8f558848c7ae0c1b5ce3c4764cbbacbb6860b86"
   },
   {
     "mod_name": "legacy_of_the_dragonborn",
@@ -12812,7 +12891,8 @@
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/BashTags/LegacyoftheDragonborn.txt",
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/BashTags/LegacyoftheDragonborn.esm.txt"
     ],
-    "fomod_choices": null
+    "fomod_choices": null,
+    "package_hash": "fbd2747907efc87f281eaeac7f6d3343862c5c1473324f9d77cbb53cc90dabb0"
   },
   {
     "mod_name": "legacy_of_the_dragonborn_patches",
@@ -12855,7 +12935,8 @@
         "Static Mesh Improvement Mod"
       ],
       "Legacy Book Covers Skyrim Patches": []
-    }
+    },
+    "package_hash": "c3f7c6f417c7dea3d4cbfcbbe3fbe8bfa0b76667465c4c1a6b23be937883d661"
   },
   {
     "mod_name": "legacy_of_the_dragonborn_cc_patches",
@@ -13224,6 +13305,7 @@
         "The Cause + Rare Curios"
       ],
       "Synergy Patches": []
-    }
+    },
+    "package_hash": "9c8504c65aa804792c26742d5f36235b3c0ec092a998a171dd7e8e8f1977c6f0"
   }
 ]
