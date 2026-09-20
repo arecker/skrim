@@ -9268,6 +9268,27 @@
     "package_hash": "19fbc9f1e5cc6ebc9f81ebfad170801cf549fb8a734e7a84b4046ba6e1bdc68a"
   },
   {
+    "mod_name": "buyable_golden_claw",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/BuyableGoldenClaw.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/seq/buyablegoldenclaw.seq",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/tif__020012cf.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/tif__020012cb.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/tif__020012ca.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/tif__020012c9.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/qf_buygoldenclaw_02000d62.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/buygoldenclawscript.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/source/tif__020012cf.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/source/tif__020012cb.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/source/tif__020012ca.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/source/tif__020012c9.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/source/qf_buygoldenclaw_02000d62.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/source/buygoldenclawscript.psc"
+    ],
+    "fomod_choices": null,
+    "package_hash": "21c71e09b729726f131f28b3ededdaca9554800e632f0a68a084fc4bc8398ed1"
+  },
+  {
     "mod_name": "quick_light",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/QuickLight.esp",
@@ -11016,6 +11037,58 @@
     ],
     "fomod_choices": null,
     "package_hash": "7975b0d23113a281286a3197b143588fac1a378079bec7890747120a5dd96ce7"
+  },
+  {
+    "mod_name": "unlimited_fast_travel",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/UnlimitedFastTravel.pdb",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/UnlimitedFastTravel.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/UnlimitedFastTravelMCM.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/UnlimitedFastTravelMCM.bsa",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/licenses/xbyak-BSD-3-Clause.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/licenses/spdlog-MIT.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/licenses/rapidcsv-BSD-3-Clause.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/licenses/fmt-MIT.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/licenses/CommonLibSSE-NG-3.6.0-MIT.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/UnlimitedFastTravel.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/nPFT_MCM_PlayerAlias.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/nPFT_MCM.pex",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/UnlimitedFastTravel.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/nPFT_MCM_PlayerAlias.psc",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Scripts/Source/nPFT_MCM.psc"
+    ],
+    "fomod_choices": null,
+    "package_hash": "a347dcfdb7d3ba68fee5bf70ca6bc426882a6cd2ef7eea6259ddec2826d3a750"
+  },
+  {
+    "mod_name": "passive_regen",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SimplePercentRegen.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/SimplePercentRegen.ini"
+    ],
+    "fomod_choices": {
+      "Health regeneration": "1% Health per second",
+      "Magicka regeneration": "2% Magicka per second",
+      "Stamina regeneration": "2% Stamina per second"
+    },
+    "package_hash": "103512928fce6c91eef2eabfe86faad39148dd042c5e801cbbb3ade5f20ae960"
+  },
+  {
+    "mod_name": "perk_point_book",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/InigoPerkPointGiver.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/InigoPerkPointGiver.bsa"
+    ],
+    "fomod_choices": null,
+    "package_hash": "b9157c3a9957f3c6b6cb25ac79ff57538fd8d05064d72b465e28335962c64b56"
+  },
+  {
+    "mod_name": "pickpocket100",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/pickpocket100.esp"
+    ],
+    "fomod_choices": null,
+    "package_hash": "1214b5986b1b49d5add8b8b55b2d2b1d9f73b6197a80149a49a1f8c1b70ec33f"
   },
   {
     "mod_name": "unread_books_glow",
