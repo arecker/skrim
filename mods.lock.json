@@ -9289,32 +9289,17 @@
     "package_hash": "21c71e09b729726f131f28b3ededdaca9554800e632f0a68a084fc4bc8398ed1"
   },
   {
-    "mod_name": "quick_light",
+    "mod_name": "wearable_lanterns",
     "targets": [
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/QuickLight.esp",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/aaaQLPlayerAliasScript.pex",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/scripts/aaaQLMCMScript.pex",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_turkish.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_swedish.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_spanish.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_serbian.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_russian.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_polish.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_korean.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_japanese.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_italian.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_german.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_french.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_english.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_dutch.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_czech.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/interface/translations/QuickLight_brasillianportgues.txt",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/magic/QuickLight/QuickLightFX_NoEffect.nif",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/magic/QuickLight/QuickLightFX_Magic.nif",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/meshes/magic/QuickLight/QuickLightFX.nif"
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Chesko_WearableLantern.esp",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Chesko_WearableLantern.bsa",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Chesko_WearableLantern - Textures.bsa",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/readmes/wearablelanterns_readme.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/readmes/wearablelanterns_license.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/readmes/wearablelanterns_changelog.txt"
     ],
     "fomod_choices": null,
-    "package_hash": "5d588225754ac616a5a4691a4917cbc2ea7e6eedbab2f292aa07f748243ebce9"
+    "package_hash": "e76eb9bbbc29878d13b9e95b9a8e8df5d050c6bb3dd193ee12015adc501a4bc4"
   },
   {
     "mod_name": "the_paarthurnax_dilemma",

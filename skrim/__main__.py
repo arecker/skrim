@@ -32,6 +32,10 @@ def main():
     config, mods = load_config(args.config)
     logger.info('loaded %d mod(s) from %s', len(mods), args.config)
 
+    if args.validate:
+        logger.info('requirements OK for %d mod(s)', len(mods))
+        return
+
     lock_file = lock_file_path(args.config)
 
     installs = load_installations(lock_file)
@@ -107,6 +111,7 @@ Config = collections.namedtuple('Config', [
 Mod = collections.namedtuple('Mod', [
     'name',
     'filename',
+    'requires',  # tuple of mod names that must appear earlier in mods.conf
 ])
 
 # A Mod that was already installed, according to the lock file
@@ -143,6 +148,7 @@ def parse_args():
 
     options = parser.add_argument_group('Modes', description='(default): installs mods in config')
     options.add_argument('--pave', action='store_true', default=False, help='return skyrim back to its vanilla state')
+    options.add_argument('--validate', action='store_true', default=False, help='check mod requirements and exit')
     options.add_argument('--again', action='store_true', default=False, help='prompt interactive installers again')
 
     run_modes = parser.add_argument_group('Advanced')
@@ -203,9 +209,10 @@ def load_config(config_path):
             continue
 
         kwargs = dict(parser.items(section))
+        requires = tuple(name.strip() for name in kwargs.pop('requires', '').split(',') if name.strip())
 
         try:
-            mod = Mod(name=section, **kwargs)
+            mod = Mod(name=section, requires=requires, **kwargs)
         except TypeError as e:
             raise ValueError(f'[{section}] is misconfigured! {e}')
 
@@ -215,7 +222,25 @@ def load_config(config_path):
 
         mods.append(mod)
 
+    validate_requirements(mods)
+
     return config, mods
+
+
+def validate_requirements(mods):
+    """Check that each mod's `requires` entries exist and precede it in `mods`.
+
+    Raises a ValueError on a missing or out-of-order dependency.
+    """
+    mod_index_by_name = {mod.name: i for i, mod in enumerate(mods)}
+
+    for i, mod in enumerate(mods):
+        for required_name in mod.requires:
+            required_index = mod_index_by_name.get(required_name)
+            if required_index is None:
+                raise ValueError(f'[{mod.name}] requires [{required_name}], which is not in config')
+            if required_index > i:
+                raise ValueError(f'[{mod.name}] requires [{required_name}], which is listed after it in config')
 
 
 def load_installations(lockfile_path):
