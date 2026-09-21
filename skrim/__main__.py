@@ -74,7 +74,7 @@ def main():
             if old_install is not None and old_install.package_hash == package_hash:
                 if all(pathlib.Path(target).is_file() for target in old_install.targets):
                     logger.info('skipping [%s] (%d/%d), unchanged and all targets present', mod.name, i + 1, len(mods))
-                    new_installs.append(old_install
+                    new_installs.append(old_install)
                     continue
                 logger.info('reinstalling [%s] (%d/%d), unchanged but missing targets', mod.name, i + 1, len(mods))
             else:
