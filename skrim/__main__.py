@@ -1,6 +1,10 @@
 """skrim - manage your skyrim mods like an adult"""
 
-import argparse
+from . import (
+    configure_logger,
+    parse_args,
+)
+
 import collections
 import configparser
 import contextlib
@@ -20,7 +24,7 @@ logger = logging.getLogger()
 
 
 def main():
-    args = parse_args()
+    args = parse_args(description=__doc__)
     configure_logger(verbose=args.verbose)
 
     logger.debug('starting skrim (python_version = %s, python_cmd = %s, pwd = %s, args = %s)', '.'.join(map(str, sys.version_info[:3])), sys.executable, pathlib.Path.cwd(), args)
@@ -111,7 +115,7 @@ Config = collections.namedtuple('Config', [
 Mod = collections.namedtuple('Mod', [
     'name',
     'filename',
-    'requires',  # tuple of mod names that must appear earlier in mods.conf
+    'requires',
 ])
 
 # A Mod that was already installed, according to the lock file
@@ -121,41 +125,6 @@ Installation = collections.namedtuple('Installation', [
     'fomod_choices',  # dict of group name -> chosen plugin name, or None
     'package_hash',  # sha256 hex digest of the downloaded package at install time
 ])
-
-
-def configure_logger(verbose=False, format='%(levelname)s: %(message)s'):
-    """Setup the script's logger with some good defaults.
-
-    Log everything to stderr with the `format`
-
-    Show debug logs if `verbose` is True, otherwise just stick to info.
-    """
-
-    handler = logging.StreamHandler(sys.stderr)
-    handler.setFormatter(logging.Formatter(format))
-
-    logger.addHandler(handler)
-    logger.setLevel(logging.DEBUG if verbose else logging.INFO)
-
-
-def parse_args():
-    """Return an argparse object.
-
-    Just argparse, only with the courtesy of hiding all of argparse's bullshit.
-    """
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('-c', '--config', type=pathlib.Path, required=True, help='path to the config file (required)')
-
-    options = parser.add_argument_group('Modes', description='(default): installs mods in config')
-    options.add_argument('--pave', action='store_true', default=False, help='return skyrim back to its vanilla state')
-    options.add_argument('--validate', action='store_true', default=False, help='check mod requirements and exit')
-    options.add_argument('--again', action='store_true', default=False, help='prompt interactive installers again')
-
-    run_modes = parser.add_argument_group('Advanced')
-    run_modes.add_argument('-v', '--verbose', action='store_true', default=False, help='show debug logs')
-    run_modes.add_argument('-d', '--debug', action='store_true', default=False, help='interactively step through code')
-
-    return parser.parse_args()
 
 
 def lock_file_path(config_path):

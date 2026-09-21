@@ -16,4 +16,9 @@ setuptools.setup(
     install_requires=[
         'libarchive-c==5.3',
     ],
+    extras_require={
+        'dev': [
+            'python-lsp-server',
+        ],
+    },
 )

@@ -11,6 +11,10 @@ venv/bin/python:
 venv/bin/skrim: venv/bin/python setup.py
 	./venv/bin/pip install --quiet -e .
 
+.PHONY: dev
+dev: venv/bin/python setup.py
+	./venv/bin/pip install --quiet -e .[dev]
+
 .PHONY: test
 test: venv/bin/skrim
 	./venv/bin/python -m unittest discover -s tests
