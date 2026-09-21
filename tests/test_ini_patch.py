@@ -5,7 +5,7 @@ import pathlib
 import tempfile
 import unittest
 
-import skrim.__main__ as skrim
+import skrim.game as skrim
 
 
 class TestToggleIniPatch(unittest.TestCase):

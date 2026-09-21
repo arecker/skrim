@@ -4,7 +4,7 @@ import pathlib
 import tempfile
 import unittest
 
-import skrim.__main__ as skrim
+import skrim.config as skrim
 
 
 class TestLoadConfigRequires(unittest.TestCase):

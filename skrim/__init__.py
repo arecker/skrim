@@ -1,7 +1,15 @@
-from .fomod import (
-    calculate_fomod_choices,
-    calculate_fomod_targets,
-    load_fomod_config,
+from .config import load_config
+from .game import (
+    sniff_out_skyrim_version,
+    toggle_ini_patch,
+    toggle_plugins_file,
+)
+from .install import (
+    hash_package,
+    install_mod,
+    load_installations,
+    pave_installations,
+    write_installations,
 )
 from .utils import (
     configure_logger,
@@ -9,9 +17,15 @@ from .utils import (
 )
 
 __all__ = [
-    'calculate_fomod_choices',
-    'calculate_fomod_targets',
     'configure_logger',
-    'load_fomod_config',
+    'hash_package',
+    'install_mod',
+    'load_config',
+    'load_installations',
     'parse_args',
+    'pave_installations',
+    'sniff_out_skyrim_version',
+    'toggle_ini_patch',
+    'toggle_plugins_file',
+    'write_installations',
 ]
