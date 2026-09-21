@@ -6,7 +6,7 @@ import unittest
 import unittest.mock
 import xml.etree.ElementTree
 
-import skrim.__main__ as skrim
+import skrim.fomod as skrim
 
 
 def fomod_xml(text):
