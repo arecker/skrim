@@ -17,7 +17,7 @@ dev: venv/bin/python setup.py
 
 .PHONY: test
 test: venv/bin/skrim
-	./venv/bin/python -m unittest discover -s tests
+	./venv/bin/python -m unittest discover -s tests -t .
 
 .PHONY: clean
 clean:
