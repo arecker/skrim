@@ -98,12 +98,14 @@ def package_unzipped_in_temp_dir(package_path):
 
         # if there is just one directory in the package, then "cd"
         # into it and treat it like the root.  unless that directory is
-        # itself a standard Data-relative folder (Data/SKSE/Scripts/etc.),
-        # which needs to stay put relative to the game_dir instead of
-        # being mistaken for a wrapper folder around the real content.
+        # itself a standard Data-relative folder (Data/SKSE/Scripts/etc.)
+        # or a fomod installer folder, which need to stay put -- the former
+        # relative to the game_dir, the latter so load_fomod_config can still
+        # find ModuleConfig.xml at fomod/ -- instead of being mistaken for a
+        # wrapper folder around the real content.
         special_case_dirs = (
             'data', 'skse', 'interface', 'meshes', 'misc', 'music',
-            'scripts', 'seq', 'shadersfx', 'sound', 'strings', 'textures', 'video',
+            'scripts', 'seq', 'shadersfx', 'sound', 'strings', 'textures', 'video', 'fomod',
         )
         entries = list(temp_dir.iterdir())
         if len(entries) == 1 and entries[0].is_dir() and entries[0].name.lower() not in special_case_dirs:

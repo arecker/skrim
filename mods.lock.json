@@ -11246,6 +11246,22 @@
     "package_hash": "f3f17759c20c5e196543817a3fa0edc27b0aeacef4be379ed19f060a61de902f"
   },
   {
+    "mod_name": "jiubs_opus",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/JiubQuestMarkers.esp"
+    ],
+    "fomod_choices": null,
+    "package_hash": "74121240ced5e0eaf30f666902d0ef7f1fa338d7ee1f9a724742f25c47c2cbe4"
+  },
+  {
+    "mod_name": "draugr_unrelenting_force_delete",
+    "targets": [
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/DraugrUnrelentingForceDelete.esp"
+    ],
+    "fomod_choices": null,
+    "package_hash": "cc3753f169aa4ba347fa0c147445a898a03e55388e72d66b97f528750ec35850"
+  },
+  {
     "mod_name": "pickpocket100",
     "targets": [
       "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/pickpocket100.esp"
@@ -11842,12 +11858,12 @@
   {
     "mod_name": "skyrim_is_luminous",
     "targets": [
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Skyrim is Luminous.esp",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SIL - Somber.esp",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SIL - Ominous.esp",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SIL - Nightmare.esp"
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Skyrim is Luminous.esp"
     ],
-    "fomod_choices": null,
+    "fomod_choices": {
+      "Skyrim is Luminous": "Skyrim is Luminous.esp",
+      "Ambient Brightness [Optional]": []
+    },
     "package_hash": "050b079b173f62dafd12b23e900ec2a3ac2f09e61da230e2dcf2ad93347abd4b"
   },
   {
