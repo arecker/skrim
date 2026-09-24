@@ -22,6 +22,7 @@ def parse_args(description=None):
     options.add_argument('--pave', action='store_true', default=False, help='return skyrim back to its vanilla state')
     options.add_argument('--validate', action='store_true', default=False, help='check mod requirements and exit')
     options.add_argument('--again', action='store_true', default=False, help='prompt interactive installers again')
+    options.add_argument('--reinstall', metavar='MOD_NAME', help='delete and reinstall a single mod from scratch')
 
     run_modes = parser.add_argument_group('Advanced')
     run_modes.add_argument('-v', '--verbose', action='store_true', default=False, help='show debug logs')

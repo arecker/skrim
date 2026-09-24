@@ -55,6 +55,32 @@ def main():
         pave_installations(installations=installs)
         return
 
+    if args.reinstall:
+        mod = next((mod for mod in mods if mod.name == args.reinstall), None)
+        if mod is None:
+            raise ValueError(f'[{args.reinstall}] not found in {args.config}')
+
+        installs_by_name = {installation.mod_name: installation for installation in installs}
+        old_install = installs_by_name.get(args.reinstall)
+
+        if old_install is not None:
+            pave_installations(installations=[old_install])
+            toggle_plugins_file([old_install], config.plugins_file, off=True)
+
+        install = install_mod(mod, config.downloads_dir, config.game_dir, None, skyrim_version)
+        logger.info('copied %d file(s) to game directory', len(install.targets))
+
+        toggle_ini_patch(config.ini_file, off=False)
+        toggle_plugins_file([install], config.plugins_file, off=False)
+
+        new_installs = [install if installation.mod_name == args.reinstall else installation for installation in installs]
+        if old_install is None:
+            new_installs.append(install)
+
+        write_installations(new_installs, lock_file)
+        logger.info('wrote %s', lock_file)
+        return
+
     installs_by_name = {installation.mod_name: installation for installation in installs}
     config_mod_names = {mod.name for mod in mods}
 
@@ -66,17 +92,27 @@ def main():
     # start collecting a list for the new lock file
     new_installs = []
 
+    # names of mods (re)installed this run -- used to cascade reinstalls onto
+    # mods that require them, since a dependent's files may overwrite (or be
+    # overwritten by) files from what it requires, and reinstalling only one
+    # side of that would silently break the overwrite order
+    changed = set()
+
     try:
         for i, mod in enumerate(mods):
             old_install = installs_by_name.get(mod.name)
             package_hash = hash_package(pathlib.Path(config.downloads_dir) / mod.filename)
+            requires_changed = any(name in changed for name in mod.requires)
 
             if old_install is not None and old_install.package_hash == package_hash:
-                if all(pathlib.Path(target).is_file() for target in old_install.targets):
+                if not requires_changed and all(pathlib.Path(target).is_file() for target in old_install.targets):
                     logger.info('skipping [%s] (%d/%d), unchanged and all targets present', mod.name, i + 1, len(mods))
                     new_installs.append(old_install)
                     continue
-                logger.info('reinstalling [%s] (%d/%d), unchanged but missing targets', mod.name, i + 1, len(mods))
+                elif requires_changed:
+                    logger.info('reinstalling [%s] (%d/%d), a required mod was updated', mod.name, i + 1, len(mods))
+                else:
+                    logger.info('reinstalling [%s] (%d/%d), unchanged but missing targets', mod.name, i + 1, len(mods))
             else:
                 logger.info('installing [%s] (%d/%d)', mod.name, i + 1, len(mods))
                 if old_install is not None:
@@ -87,6 +123,7 @@ def main():
 
             install = install_mod(mod, config.downloads_dir, config.game_dir, old_fomod_choices.get(mod.name), skyrim_version)
             new_installs.append(install)
+            changed.add(mod.name)
             logger.info('copied %d file(s) to game directory', len(install.targets))
     except Exception:
         write_installations(new_installs, lock_file)
