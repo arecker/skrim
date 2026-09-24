@@ -9651,11 +9651,13 @@
   {
     "mod_name": "animation_motion_revolution",
     "targets": [
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AnimationMotionRevolution.ini",
-      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AnimationMotionRevolution.dll"
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins/AnimationMotionRevolution.dll",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/AnimationMotionRevolution/NOTICE.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/AnimationMotionRevolution/GPL-3.0-or-later.txt",
+      "/home/deck/.local/share/Steam/steamapps/common/Skyrim Special Edition/Data/Docs/AnimationMotionRevolution/AMR-MIT-LICENSE.txt"
     ],
     "fomod_choices": null,
-    "package_hash": "986b11630b6c93c65ff9a6441a7eac442012f77fd0a7386bcf30075fafd199fd"
+    "package_hash": "13d01a2fb3219725568233da76ce30419c8630ee5c240113b45ea70bf6992f3f"
   },
   {
     "mod_name": "sse_display_tweaks",
