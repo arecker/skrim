@@ -112,4 +112,4 @@ Run with an interactive debugger.
 $ skrim -d
 ```
 
-Anything else?  Just run `skrim -h`
+Anything else?  Just run `skrim -h`, or feel free to creep on [my mod config](https://github.com/arecker/skyrim-mods).
