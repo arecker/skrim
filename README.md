@@ -6,7 +6,7 @@ Trying to get skyrim working with mods on your steam deck?  Tired of fiddling ar
 
 ## Features
 
-- **simple**: track load order and dependencies in ini based configuration
+- **simple**: track load order and dependencies with ini based configuration
 - **lightweight**: only python required, terminal based input for interactive installers
 - **idempotent**: automatic lock file that tracks every file copied to your game
 
