@@ -28,7 +28,7 @@ Open a new Konsole terminal in the cloned repo.  Create a virtual environment an
 
 Add a new alias to your `.bashrc`
 
-    echo 'alias skrim="path/to/where/you/cloned/skrim/venv/bin/skrim"' > ~/.bashrc
+    echo 'alias skrim="path/to/where/you/cloned/skrim/venv/bin/skrim"' >> ~/.bashrc
 
 And that's it!  You can now use the `skrim` command to manage your game.
 
