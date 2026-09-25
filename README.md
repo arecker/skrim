@@ -153,8 +153,6 @@ Accidentally remove a mod that another one requires?  That's validated too.
     (deck@steamdeck skyrim-mods)$ skrim -c mods.conf --validate
     ERROR: [sleeping_expanded] requires [dynamic_animation_replacer], which is not in config
 
-Update your mods without fear.  If you reinstall one, all the mods that depend on it will also get reinstalled.
-
 ### Other Modes
 
 Delete everything and revert the game to it's vanilla state - like Todd Howard intended.
