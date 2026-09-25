@@ -157,9 +157,30 @@ Accidentally remove a mod that another one requires?  That's validated too.
 
 Delete everything and revert the game to it's vanilla state - like Todd Howard intended.
 
+    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf --pave
+    INFO: loaded 3 mod(s) from mods.conf
+    INFO: loaded 3 installed mod(s) from mods.lock.json
+    INFO: sniffed out skyrim version: 1.7.104.0
+    INFO: removing ini patch from /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/Skyrim.ini
+    INFO: removing plugins file patch from /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/AppData/Local/Skyrim Special Edition/Plugins.txt
+    INFO: paving [skse64]
+    INFO: paving [address_library]
+    INFO: paving [papyrusutil_se]
+
 Run `skrim` with verbose logging (warning, it's very verbose).
 
+    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf -v
+    DEBUG: starting skrim (python_version = 3.13.15, python_cmd = /home/deck/skrim/venv/bin/python, pwd = /home/deck/skyrim-mods, args = Namespace(config=PosixPath('mods.conf'), pave=False, validate=False, again=False, verbose=True, debug=False))
+    INFO: loaded 3 mod(s) from mods.conf
+    INFO: loaded 3 installed mod(s) from mods.lock.json
+
 Run `skrim` in a `pdb` session so you can step through the run interactively (only do this if you know what you are doing, you might bork your game).
+
+    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf -d
+    INFO: --debug detected, starting pdb session
+    > /home/deck/skrim/skrim/__main__.py(34)main()
+    -> pdb.set_trace()
+    (Pdb)
 
 # Problems
 
