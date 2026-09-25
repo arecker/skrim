@@ -96,7 +96,7 @@ Tired of your mods?  Get rid of everything with `--pave`.  This will COMPLETELY 
 $ skrim -c mods.conf --pave
 ```
 
-How do you configure load order?  Load order?  The way you list the mods IS the load order.
+How do you configure load order?  Load order?  The way you list the mods in the config file IS the load order.
 
 ### Fancy Things
 
