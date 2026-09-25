@@ -9,7 +9,7 @@ _Built on a steam deck for the steam deck._
 Switch to desktop mode!  Open a terminal and clone this repo!
 
 ```
-$ git clone https://www.github.com/arecker/skrim.git
+$ git clone https://github.com/arecker/skrim.git
 ```
 
 Run `make` in this directory!
