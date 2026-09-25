@@ -55,32 +55,6 @@ def main():
         pave_installations(installations=installs)
         return
 
-    if args.reinstall:
-        mod = next((mod for mod in mods if mod.name == args.reinstall), None)
-        if mod is None:
-            raise ValueError(f'[{args.reinstall}] not found in {args.config}')
-
-        installs_by_name = {installation.mod_name: installation for installation in installs}
-        old_install = installs_by_name.get(args.reinstall)
-
-        if old_install is not None:
-            pave_installations(installations=[old_install])
-            toggle_plugins_file([old_install], config.plugins_file, off=True)
-
-        install = install_mod(mod, config.downloads_dir, config.game_dir, None, skyrim_version)
-        logger.info('copied %d file(s) to game directory', len(install.targets))
-
-        toggle_ini_patch(config.ini_file, off=False)
-        toggle_plugins_file([install], config.plugins_file, off=False)
-
-        new_installs = [install if installation.mod_name == args.reinstall else installation for installation in installs]
-        if old_install is None:
-            new_installs.append(install)
-
-        write_installations(new_installs, lock_file)
-        logger.info('wrote %s', lock_file)
-        return
-
     installs_by_name = {installation.mod_name: installation for installation in installs}
     config_mod_names = {mod.name for mod in mods}
 
