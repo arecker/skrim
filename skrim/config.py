@@ -2,6 +2,13 @@ import collections
 import configparser
 import pathlib
 
+
+class ConfigProblem(ValueError):
+    """Raised for anything wrong with the config file itself -- bad syntax, a
+    missing package, an unresolved `requires`. Callers can catch just this to
+    print a short error instead of a traceback."""
+
+
 # The [skrim] section of the config file.
 Config = collections.namedtuple('Config', [
     'downloads_dir',
@@ -21,33 +28,33 @@ Mod = collections.namedtuple('Mod', [
 def load_config(config_path):
     """Load the `[skrim]` section and the list of `Mod` tuples from the config path.
 
-    Raises a ValueError if you dicked up, like passed in a path that
+    Raises a ConfigProblem if you dicked up, like passed in a path that
     doesn't exist or screwed up your config file.  Take it up with
     python, I'm just using the library!
 
-    Raises a ValueError if [skrim] is missing or any of its fields are missing.
+    Raises a ConfigProblem if [skrim] is missing or any of its fields are missing.
 
     Returns a (Config, list of Mod) tuple.
     """
     config_path = pathlib.Path(config_path)
 
     if not config_path.is_file():
-        raise ValueError(f'config file does not exist: {config_path}')
+        raise ConfigProblem(f'config file does not exist: {config_path}')
 
     parser = configparser.ConfigParser()
 
     try:
         parser.read(config_path)
     except configparser.Error as error:
-        raise ValueError(f'failed to parse config file {config_path}: {error}') from error
+        raise ConfigProblem(f'failed to parse config file {config_path}: {error}') from error
 
     if not parser.has_section('skrim'):
-        raise ValueError(f'[skrim] section missing from {config_path}')
+        raise ConfigProblem(f'[skrim] section missing from {config_path}')
 
     try:
         config = Config(**dict(parser.items('skrim')))
     except TypeError as e:
-        raise ValueError(f'[skrim] is misconfigured! {e}')
+        raise ConfigProblem(f'[skrim] is misconfigured! {e}')
 
     config = config._replace(
         downloads_dir=pathlib.Path(config.downloads_dir).expanduser(),
@@ -68,11 +75,11 @@ def load_config(config_path):
         try:
             mod = Mod(name=section, requires=requires, **kwargs)
         except TypeError as e:
-            raise ValueError(f'[{section}] is misconfigured! {e}')
+            raise ConfigProblem(f'[{section}] is misconfigured! {e}')
 
         mod_path = config.downloads_dir / mod.filename
         if not mod_path.is_file():
-            raise ValueError(f'[{section}] file does not exist: {mod_path}')
+            raise ConfigProblem(f'[{section}] file does not exist: {mod_path}')
 
         mods.append(mod)
 
@@ -84,7 +91,7 @@ def load_config(config_path):
 def validate_requirements(mods):
     """Check that each mod's `requires` entries exist and precede it in `mods`.
 
-    Raises a ValueError on a missing or out-of-order dependency.
+    Raises a ConfigProblem on a missing or out-of-order dependency.
     """
     mod_index_by_name = {mod.name: i for i, mod in enumerate(mods)}
 
@@ -92,6 +99,6 @@ def validate_requirements(mods):
         for required_name in mod.requires:
             required_index = mod_index_by_name.get(required_name)
             if required_index is None:
-                raise ValueError(f'[{mod.name}] requires [{required_name}], which is not in config')
+                raise ConfigProblem(f'[{mod.name}] requires [{required_name}], which is not in config')
             if required_index > i:
-                raise ValueError(f'[{mod.name}] requires [{required_name}], which is listed after it in config')
+                raise ConfigProblem(f'[{mod.name}] requires [{required_name}], which is listed after it in config')

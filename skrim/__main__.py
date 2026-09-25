@@ -1,6 +1,7 @@
 """skrim - manage your skyrim mods like an adult"""
 
 from . import (
+    ConfigProblem,
     configure_logger,
     hash_package,
     install_mod,
@@ -32,7 +33,12 @@ def main():
         logger.info('--debug detected, starting pdb session')
         pdb.set_trace()
 
-    config, mods = load_config(args.config)
+    try:
+        config, mods = load_config(args.config)
+    except ConfigProblem as error:
+        logger.error(error)
+        sys.exit(1)
+
     logger.info('loaded %d mod(s) from %s', len(mods), args.config)
 
     if args.validate:

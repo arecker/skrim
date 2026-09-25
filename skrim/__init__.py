@@ -1,4 +1,4 @@
-from .config import load_config
+from .config import ConfigProblem, load_config
 from .game import (
     sniff_out_skyrim_version,
     toggle_ini_patch,
@@ -17,6 +17,7 @@ from .utils import (
 )
 
 __all__ = [
+    'ConfigProblem',
     'configure_logger',
     'hash_package',
     'install_mod',
