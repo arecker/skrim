@@ -4,3 +4,7 @@
 /skrim.egg-info/
 /skrim/__pycache__/
 __pycache__
+/mock/downloads/
+/mock/game/
+/mock/mods.lock.json
+mock
