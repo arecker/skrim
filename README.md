@@ -145,12 +145,12 @@ Update your mods without fear.  Just ownload a newer package and update the `fil
 
 Mess up the load order?  No problem - patches are applied in the order they appear in the config, and `skrim` will validate it before touching anything.
 
-    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf --validate
+    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf
     ERROR: [address_library] requires [skse64], which is listed after it in config
 
 Accidentally remove a mod that another one requires?  That's validated too.
 
-    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf --validate
+    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf
     ERROR: [sleeping_expanded] requires [dynamic_animation_replacer], which is not in config
 
 ### Other Modes
