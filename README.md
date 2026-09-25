@@ -84,14 +84,13 @@ Run the tool to install it.
 
 And that's it!
 
-## Mods with Interactive Installers
+### Interactive Installers
 
 Even interactive installers are supported.  `skrim` will prompt for input right from the terminal and save your answers in the lock file.
 
 ![](./screenshots/3.png)
 
-
-## Mods that Dependendies
+### Dependendies
 
 Many mods depend on other mods.  Use `skrim` to track and validate these with a `requires` block in the mod config section.
 
@@ -134,3 +133,17 @@ Accidentally remove a mod that another one requires?  That's validated too.
 
     (deck@steamdeck skyrim-mods)$ skrim -c mods.conf --validate
     ERROR: [sleeping_expanded] requires [dynamic_animation_replacer], which is not in config
+
+Update your mods without fear.  If you reinstall one, all the mods that depend on it will also get reinstalled.
+
+### Other Modes
+
+Delete everything and revert the game to it's vanilla state - like Todd Howard intended.
+
+Run `skrim` with verbose logging (warning, it's very verbose).
+
+Run `skrim` in a `pdb` session so you can step through the run interactively (only do this if you know what you are doing, you might bork your game).
+
+# Problems
+
+Something broke?  I am not surprised.  I only tested this on [my own modlist](https://www.github.com/arecker/skyrim-mods), so I probably missed something.  Make a github issue and I'd be happy to take a look.
