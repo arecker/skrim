@@ -124,6 +124,25 @@ Run the tool again.  Mods that are already installed (hash in the lockfile match
     INFO: adding plugins file patch to /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/AppData/Local/Skyrim Special Edition/Plugins.txt
     INFO: wrote mods.lock.json
 
+Update your mods without fear.  Just download a newer package and update the `filename` in your config.  That mod (along with all the mods that depend on it) will get reinstalled in the proper order.
+
+    (deck@steamdeck skyrim-mods)$ skrim -c mods.conf
+    INFO: loaded 3 mod(s) from mods.conf
+    INFO: loaded 3 installed mod(s) from mods.lock.json
+    INFO: sniffed out skyrim version: 1.7.104.0
+    INFO: skipping [skse64] (1/3), unchanged and all targets present
+    INFO: installing [address_library] (2/3)
+    INFO: paving [address_library]
+    INFO: unpacking [address_library]
+    INFO: copied 25 file(s) to game directory
+    INFO: reinstalling [papyrusutil_se] (3/3), a required mod was updated
+    INFO: unpacking [papyrusutil_se]
+    INFO: copied 19 file(s) to game directory
+    INFO: adding ini patch to /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/Skyrim.ini
+    INFO: applied patch to /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/Skyrim.ini
+    INFO: adding plugins file patch to /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/AppData/Local/Skyrim Special Edition/Plugins.txt
+    INFO: wrote mods.lock.json
+
 Mess up the load order?  No problem - patches are applied in the order they appear in the config, and `skrim` will validate it before touching anything.
 
     (deck@steamdeck skyrim-mods)$ skrim -c mods.conf --validate
