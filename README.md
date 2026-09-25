@@ -14,4 +14,4 @@ Trying to get skyrim working with mods on your steam deck?  Tired of fiddling ar
 
 Flip over to the desktop mode on the steam deck and open the Konsole terminal.  Clone this repo.
 
-![](./screenshots.png)
+![](./screenshots/2.png)
