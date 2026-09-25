@@ -12,7 +12,7 @@ Trying to get skyrim working with mods on your steam deck?  Tired of fiddling ar
 - **lightweight**: only python required, terminal based input for interactive installers
 - **idempotent**: automatic lock file that tracks every file copied to your game
 
-![](./screenshots.4.png)
+![](./screenshots/4.png)
 
 ## Installation
 
