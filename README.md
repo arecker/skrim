@@ -124,7 +124,7 @@ Run the tool again.  Mods that are already installed (hash in the lockfile match
     INFO: adding plugins file patch to /home/deck/.local/share/Steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/AppData/Local/Skyrim Special Edition/Plugins.txt
     INFO: wrote mods.lock.json
 
-Update your mods without fear.  Just download a newer package and update the `filename` in your config.  That mod (along with all the mods that depend on it) will get reinstalled in the proper order.
+Update your mods without fear.  Just ownload a newer package and update the `filename` in your config.  That mod (along with all the mods that depend on it) will get reinstalled in the proper order.
 
     (deck@steamdeck skyrim-mods)$ skrim -c mods.conf
     INFO: loaded 3 mod(s) from mods.conf
