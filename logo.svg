@@ -1,24 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" width="1400" height="560">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="#07070a"/>
-      <stop offset="100%" stop-color="#020203"/>
-    </linearGradient>
-
-    <radialGradient id="glow" cx="50%" cy="42%" r="55%">
-      <stop offset="0%"  stop-color="#c96a1e" stop-opacity="0.35"/>
-      <stop offset="55%" stop-color="#c96a1e" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#c96a1e" stop-opacity="0"/>
-    </radialGradient>
-
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="#fff3cf"/>
-      <stop offset="30%" stop-color="#f0c46a"/>
-      <stop offset="55%" stop-color="#c98a2e"/>
-      <stop offset="80%" stop-color="#8a5416"/>
-      <stop offset="100%" stop-color="#5c360c"/>
-    </linearGradient>
-
     <linearGradient id="deckBody" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"  stop-color="#232227"/>
       <stop offset="100%" stop-color="#111013"/>
@@ -29,83 +10,111 @@
       <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
 
-    <filter id="titleShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#000000" flood-opacity="0.85"/>
-    </filter>
-
     <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000000" flood-opacity="0.6"/>
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000000" flood-opacity="0.25"/>
     </filter>
   </defs>
 
   <!-- backdrop -->
-  <rect x="0" y="0" width="1400" height="560" fill="url(#bg)"/>
-  <ellipse cx="700" cy="330" rx="620" ry="300" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1400" height="560" fill="#ffffff"/>
 
   <!-- title -->
   <text x="700" y="115" text-anchor="middle"
-        font-family="Cinzel, 'Trajan Pro', Georgia, 'Times New Roman', serif"
-        font-size="96" font-weight="700" letter-spacing="16"
-        fill="url(#gold)" stroke="#2a1204" stroke-width="2"
-        filter="url(#titleShadow)">SKRIM</text>
+        font-family="Monaco, 'JetBrains Mono', 'DejaVu Sans Mono', 'Courier New', monospace"
+        font-size="92" font-weight="700" letter-spacing="4"
+        fill="#000000">skrim</text>
   <text x="700" y="150" text-anchor="middle"
         font-family="Cinzel, Georgia, 'Times New Roman', serif"
         font-size="19" letter-spacing="7"
-        fill="#f0d9a8" opacity="0.85">MOD YOUR SKYRIM &#8226; STEAM DECK BORN</text>
+        fill="#000000" opacity="0.8">MOD YOUR SKYRIM &#8226; STEAM DECK BORN</text>
 
-  <!-- steam deck -->
+  <!-- steam deck (shape based on a real product photo of the device) -->
   <g transform="translate(700,365)" filter="url(#softShadow)">
 
-    <!-- body: screen slab flanked by grips -->
+    <!-- body: screen slab flanked by tapered grip handles -->
     <path fill="url(#deckBody)" d="
-      M -430,-40
-      C -430,-78 -400,-108 -362,-110
-      L -300,-112
-      C -290,-140 -262,-160 -230,-160
-      L 230,-160
-      C 262,-160 290,-140 300,-112
-      L 362,-110
-      C 400,-108 430,-78 430,-40
-      L 430,10
-      C 430,60 400,102 356,120
-      C 316,136 274,124 250,90
-      L 236,68
-      C 220,44 -220,44 -236,68
-      L -250,90
-      C -274,124 -316,136 -356,120
-      C -400,102 -430,60 -430,10
-      Z"/>
+      M -270,-145
+      C -270,-158 -280,-166 -294,-167
+      L -382,-172
+      C -414,-174 -440,-150 -444,-118
+      C -448,-80 -450,-20 -448,60
+      C -446,110 -440,150 -414,172
+      C -392,190 -360,192 -336,183
+      C -312,177 -285,174 -270,170
+      L -270,-145 Z
+      M 270,-145
+      C 270,-158 280,-166 294,-167
+      L 382,-172
+      C 414,-174 440,-150 444,-118
+      C 448,-80 450,-20 448,60
+      C 446,110 440,150 414,172
+      C 392,190 360,192 336,183
+      C 312,177 285,174 270,170
+      L 270,-145 Z
+      M -294,-167 L 294,-167 C 280,-166 270,-158 270,-145 L 270,170 L -270,170 L -270,-145 C -270,-158 -280,-166 -294,-167 Z"/>
 
-    <!-- top shoulder buttons -->
-    <rect x="-352" y="-150" width="70" height="16" rx="8" fill="#000000"/>
-    <rect x="282" y="-150" width="70" height="16" rx="8" fill="#000000"/>
-
-    <!-- left grip controls -->
-    <circle cx="-352" cy="-60" r="30" fill="#000000"/>
-    <circle cx="-352" cy="-60" r="30" fill="none" stroke="#3a3a40" stroke-width="2"/>
-    <circle cx="-352" cy="-60" r="12" fill="#232227"/>
-    <g stroke="#3a3a40" stroke-width="6" stroke-linecap="round">
-      <line x1="-380" y1="20" x2="-352" y2="20"/>
-      <line x1="-366" y1="6" x2="-366" y2="34"/>
+    <!-- accent seam across each grip -->
+    <g fill="none" stroke="#050506" stroke-width="3" stroke-linecap="round" opacity="0.8">
+      <path d="M -430,-6 C -400,2 -350,4 -300,-4"/>
+      <path d="M 430,-6 C 400,2 350,4 300,-4"/>
     </g>
-    <circle cx="-352" cy="80" r="46" fill="#000000"/>
-    <circle cx="-352" cy="80" r="46" fill="none" stroke="#3a3a40" stroke-width="2"/>
 
-    <!-- right grip controls -->
-    <circle cx="352" cy="-60" r="30" fill="#000000"/>
-    <circle cx="352" cy="-60" r="30" fill="none" stroke="#3a3a40" stroke-width="2"/>
-    <circle cx="352" cy="-60" r="12" fill="#232227"/>
-    <g fill="#3a3a40">
-      <circle cx="366" cy="6" r="6"/>
-      <circle cx="338" cy="6" r="6"/>
-      <circle cx="352" cy="-8" r="6"/>
-      <circle cx="352" cy="20" r="6"/>
+    <!-- shoulder button hints, top outer corners -->
+    <rect x="-410" y="-174" width="56" height="12" rx="6" fill="#000000"/>
+    <rect x="354" y="-174" width="56" height="12" rx="6" fill="#000000"/>
+
+    <!-- small top-inner buttons (capture / quick-access) -->
+    <rect x="-318" y="-160" width="26" height="16" rx="4" fill="#000000"/>
+    <g fill="none" stroke="#45454c" stroke-width="2.5" stroke-linecap="round">
+      <line x1="292" y1="-157" x2="312" y2="-157"/>
+      <line x1="292" y1="-151" x2="312" y2="-151"/>
+      <line x1="292" y1="-145" x2="312" y2="-145"/>
     </g>
-    <circle cx="352" cy="80" r="46" fill="#000000"/>
-    <circle cx="352" cy="80" r="46" fill="none" stroke="#3a3a40" stroke-width="2"/>
+
+    <!-- left grip: d-pad (outboard) + thumbstick (inboard) -->
+    <g stroke="#4a4a52" stroke-width="7" stroke-linecap="round">
+      <line x1="-410" y1="-56" x2="-382" y2="-56"/>
+      <line x1="-396" y1="-70" x2="-396" y2="-42"/>
+    </g>
+    <circle cx="-330" cy="-56" r="26" fill="#000000"/>
+    <circle cx="-330" cy="-56" r="26" fill="none" stroke="#45454c" stroke-width="2"/>
+    <circle cx="-330" cy="-56" r="10" fill="#2c2c32"/>
+
+    <!-- right grip: thumbstick (inboard) + ABXY (outboard) -->
+    <circle cx="330" cy="-56" r="26" fill="#000000"/>
+    <circle cx="330" cy="-56" r="26" fill="none" stroke="#45454c" stroke-width="2"/>
+    <circle cx="330" cy="-56" r="10" fill="#2c2c32"/>
+    <g fill="none" stroke="#4a4a52" stroke-width="2.5">
+      <circle cx="410" cy="-40" r="9"/>
+      <circle cx="382" cy="-40" r="9"/>
+      <circle cx="396" cy="-54" r="9"/>
+      <circle cx="396" cy="-26" r="9"/>
+    </g>
+
+    <!-- trackpads -->
+    <rect x="-408" y="4" width="96" height="96" rx="20" fill="#0a0a0c"/>
+    <rect x="-408" y="4" width="96" height="96" rx="20" fill="none" stroke="#3a3a40" stroke-width="2"/>
+    <rect x="312" y="4" width="96" height="96" rx="20" fill="#0a0a0c"/>
+    <rect x="312" y="4" width="96" height="96" rx="20" fill="none" stroke="#3a3a40" stroke-width="2"/>
+
+    <!-- steam / quick-access pill buttons -->
+    <rect x="-388" y="118" width="56" height="20" rx="10" fill="#000000"/>
+    <rect x="-388" y="118" width="56" height="20" rx="10" fill="none" stroke="#3a3a40" stroke-width="1.5"/>
+    <rect x="332" y="118" width="56" height="20" rx="10" fill="#000000"/>
+    <g fill="#5a5a62">
+      <circle cx="352" cy="128" r="3"/><circle cx="360" cy="128" r="3"/><circle cx="368" cy="128" r="3"/>
+    </g>
+
+    <!-- speaker grilles, tucked near the inner-bottom screen corners -->
+    <g fill="#000000" opacity="0.55">
+      <circle cx="-308" cy="150" r="2.4"/><circle cx="-300" cy="153" r="2.4"/><circle cx="-292" cy="156" r="2.4"/>
+      <circle cx="-308" cy="160" r="2.4"/><circle cx="-300" cy="163" r="2.4"/><circle cx="-292" cy="166" r="2.4"/>
+      <circle cx="308" cy="150" r="2.4"/><circle cx="300" cy="153" r="2.4"/><circle cx="292" cy="156" r="2.4"/>
+      <circle cx="308" cy="160" r="2.4"/><circle cx="300" cy="163" r="2.4"/><circle cx="292" cy="166" r="2.4"/>
+    </g>
 
     <!-- screen bezel -->
-    <rect x="-260" y="-142" width="520" height="300" rx="18" fill="url(#screenBezel)"/>
+    <rect x="-262" y="-140" width="524" height="285" rx="14" fill="url(#screenBezel)"/>
 
     <!-- konsole window -->
     <g transform="translate(-236,-118)">
