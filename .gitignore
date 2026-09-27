@@ -1,10 +1,4 @@
 /.agent-shell/
 /.claude/
-/__pycache__/
-/skrim.egg-info/
-/skrim/__pycache__/
-__pycache__
-/mock/downloads/
-/mock/game/
-/mock/mods.lock.json
+/bin/
 mock
