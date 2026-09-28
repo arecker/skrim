@@ -36,12 +36,12 @@ func ParseString(content string) []Section {
 			// extract the name
 			name := strings.TrimSpace(matches[1])
 
-			// if we have a current section, add it, we're done
+			// if we have a current section, add it
 			if curSection != nil {
 				sections = append(sections, *curSection)
 			}
 
-			// assign it to the current section
+			// assign it to the new current section
 			curSection = &Section{Name: name}
 		}
 
