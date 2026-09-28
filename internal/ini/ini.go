@@ -26,7 +26,7 @@ func ParseString(content string) []Section {
 
 	var curSection *Section
 
-	for _, line := range strings.Split(content, "\n") {
+	for line := range strings.SplitSeq(content, "\n") {
 		if isCommented(line) {
 			continue
 		}
