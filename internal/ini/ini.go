@@ -5,10 +5,6 @@ import (
 	"strings"
 )
 
-type Data struct {
-	Sections []Section
-}
-
 type Section struct {
 	Name   string
 	Fields []Field
@@ -19,9 +15,8 @@ type Field struct {
 	Value string
 }
 
-// Parse a string into ini data
-func ParseString(content string) Data {
-	data := Data{}
+// Parse a string into ini data sections
+func ParseString(content string) []Section {
 	sections := []Section{}
 
 	// [<name>]
@@ -62,9 +57,6 @@ func ParseString(content string) Data {
 	// append the final section
 	sections = append(sections, *curSection)
 
-	// assign our sections to the data
-	data.Sections = sections
-
 	// done!
-	return data
+	return sections
 }

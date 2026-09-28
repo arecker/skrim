@@ -10,7 +10,7 @@ func TestParseString(t *testing.T) {
 	type testCase struct {
 		name     string
 		input    string
-		expected ini.Data
+		expected []ini.Section
 	}
 
 	cases := []testCase{
@@ -21,12 +21,10 @@ func TestParseString(t *testing.T) {
 [ vegetables ]
 [desserts]
 `,
-			expected: ini.Data{
-				[]ini.Section{
-					ini.Section{Name: "fruit"},
-					ini.Section{Name: "vegetables"},
-					ini.Section{Name: "desserts"},
-				},
+			expected: []ini.Section{
+				ini.Section{Name: "fruit"},
+				ini.Section{Name: "vegetables"},
+				ini.Section{Name: "desserts"},
 			},
 		},
 		{
@@ -40,21 +38,19 @@ healthy = no
 tasty = yes
 healthy= hell yes
 `,
-			expected: ini.Data{
-				[]ini.Section{
-					ini.Section{
-						Name: "candy",
-						Fields: []ini.Field{
-							ini.Field{Key: "tasty", Value: "yes"},
-							ini.Field{Key: "healthy", Value: "no"},
-						},
+			expected: []ini.Section{
+				ini.Section{
+					Name: "candy",
+					Fields: []ini.Field{
+						ini.Field{Key: "tasty", Value: "yes"},
+						ini.Field{Key: "healthy", Value: "no"},
 					},
-					ini.Section{
-						Name: "vegetables",
-						Fields: []ini.Field{
-							ini.Field{Key: "tasty", Value: "yes"},
-							ini.Field{Key: "healthy", Value: "hell yes"},
-						},
+				},
+				ini.Section{
+					Name: "vegetables",
+					Fields: []ini.Field{
+						ini.Field{Key: "tasty", Value: "yes"},
+						ini.Field{Key: "healthy", Value: "hell yes"},
 					},
 				},
 			},
@@ -69,14 +65,12 @@ sure? = yes
 tasty = yes
 healthy= hell yes
 `,
-			expected: ini.Data{
-				[]ini.Section{
-					ini.Section{
-						Name: "vegetables",
-						Fields: []ini.Field{
-							ini.Field{Key: "tasty", Value: "yes"},
-							ini.Field{Key: "healthy", Value: "hell yes"},
-						},
+			expected: []ini.Section{
+				ini.Section{
+					Name: "vegetables",
+					Fields: []ini.Field{
+						ini.Field{Key: "tasty", Value: "yes"},
+						ini.Field{Key: "healthy", Value: "hell yes"},
 					},
 				},
 			},
