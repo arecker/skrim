@@ -1,8 +1,12 @@
 .PHONY: all
-all: bin/skrim
+all: test build
 
-bin/skrim: main.go go.mod
+build:
 	go build -o bin/skrim-golang .
+
+.PHONY:
+test:
+	go test -v ./...
 
 .PHONY: clean
 clean:
