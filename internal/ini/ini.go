@@ -27,6 +27,10 @@ func ParseString(content string) []Section {
 	var curSection *Section
 
 	for _, line := range strings.Split(content, "\n") {
+		if isCommented(line) {
+			continue
+		}
+
 		// check for [section]
 		if matches := re_sec.FindStringSubmatch(line); matches != nil {
 			// extract the name
@@ -59,4 +63,8 @@ func ParseString(content string) []Section {
 
 	// done!
 	return sections
+}
+
+func isCommented(line string) bool {
+	return strings.HasPrefix(strings.TrimSpace(line), "#")
 }

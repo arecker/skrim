@@ -75,6 +75,21 @@ healthy= hell yes
 				},
 			},
 		},
+		{
+			name: "should ignore comments",
+			input: `
+[fruit]
+[vegetables]
+#[poison]
+[desserts]
+# poison=yes
+`,
+			expected: []ini.Section{
+				ini.Section{Name: "fruit"},
+				ini.Section{Name: "vegetables"},
+				ini.Section{Name: "desserts"},
+			},
+		},
 	}
 
 	for _, tc := range cases {
