@@ -1,6 +1,7 @@
 package ini_test
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -155,5 +156,11 @@ func TestParseFile(t *testing.T) {
 				t.Errorf("expected = %v, actual = %v", tc.expected, actual)
 			}
 		})
+	}
+
+	// test nonexistent file
+	_, err := ini.ParseFile("does-not-exist.txt")
+	if !errors.Is(err, os.ErrNotExist) {
+		t.Errorf("expected file not found error, got %v", err)
 	}
 }
