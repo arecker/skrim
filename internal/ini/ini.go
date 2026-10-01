@@ -1,9 +1,14 @@
 package ini
 
 import (
+	"os"
 	"regexp"
 	"strings"
 )
+
+type Data struct {
+	Sections []Section
+}
 
 type Section struct {
 	Name   string
@@ -16,14 +21,13 @@ type Field struct {
 }
 
 // Parse a string into ini data sections
-func ParseString(content string) []Section {
-	sections := []Section{}
-
+func ParseString(content string) *Data {
 	// [<name>]
 	re_sec := regexp.MustCompile(`\[([^]]+)\]`)
 	// <key> = <value>
 	re_field := regexp.MustCompile(`^([^=]+)\s*=\s*(.*)$`)
 
+	sections := []Section{}
 	var curSection *Section
 
 	for line := range strings.SplitSeq(content, "\n") {
@@ -62,7 +66,16 @@ func ParseString(content string) []Section {
 	sections = append(sections, *curSection)
 
 	// done!
-	return sections
+	return &Data{Sections: sections}
+}
+
+func ParseFile(path string) (*Data, error) {
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	return ParseString(string(content)), nil
 }
 
 func isCommented(line string) bool {

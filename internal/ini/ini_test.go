@@ -1,35 +1,38 @@
 package ini_test
 
 import (
+	"os"
+	"path/filepath"
 	"reflect"
 	"skrim/internal/ini"
 	"testing"
 )
 
-func TestParseString(t *testing.T) {
-	type testCase struct {
-		name     string
-		input    string
-		expected []ini.Section
-	}
+type testCase struct {
+	name     string
+	content  string
+	expected ini.Data
+}
 
-	cases := []testCase{
-		{
-			name: "should parse sections",
-			input: `
+var testCases = []testCase{
+	{
+		name: "should parse sections",
+		content: `
 [fruit]
 [ vegetables ]
 [desserts]
 `,
-			expected: []ini.Section{
-				ini.Section{Name: "fruit"},
-				ini.Section{Name: "vegetables"},
-				ini.Section{Name: "desserts"},
+		expected: ini.Data{
+			[]ini.Section{
+				{Name: "fruit"},
+				{Name: "vegetables"},
+				{Name: "desserts"},
 			},
 		},
-		{
-			name: "should parse fields",
-			input: `
+	},
+	{
+		name: "should parse fields",
+		content: `
 [candy]
 tasty = yes
 healthy = no
@@ -38,26 +41,28 @@ healthy = no
 tasty = yes
 healthy= hell yes
 `,
-			expected: []ini.Section{
-				ini.Section{
+		expected: ini.Data{
+			[]ini.Section{
+				{
 					Name: "candy",
 					Fields: []ini.Field{
-						ini.Field{Key: "tasty", Value: "yes"},
-						ini.Field{Key: "healthy", Value: "no"},
+						{Key: "tasty", Value: "yes"},
+						{Key: "healthy", Value: "no"},
 					},
 				},
-				ini.Section{
+				{
 					Name: "vegetables",
 					Fields: []ini.Field{
-						ini.Field{Key: "tasty", Value: "yes"},
-						ini.Field{Key: "healthy", Value: "hell yes"},
+						{Key: "tasty", Value: "yes"},
+						{Key: "healthy", Value: "hell yes"},
 					},
 				},
 			},
 		},
-		{
-			name: "should ignore fields without sections",
-			input: `
+	},
+	{
+		name: "should ignore fields without sections",
+		content: `
 what = no
 sure? = yes
 
@@ -65,38 +70,88 @@ sure? = yes
 tasty = yes
 healthy= hell yes
 `,
-			expected: []ini.Section{
-				ini.Section{
+		expected: ini.Data{
+			[]ini.Section{
+				{
 					Name: "vegetables",
 					Fields: []ini.Field{
-						ini.Field{Key: "tasty", Value: "yes"},
-						ini.Field{Key: "healthy", Value: "hell yes"},
+						{Key: "tasty", Value: "yes"},
+						{Key: "healthy", Value: "hell yes"},
 					},
 				},
 			},
 		},
-		{
-			name: "should ignore comments",
-			input: `
+	},
+	{
+		name: "should cast fields without values as empty strings",
+		content: `
+[vegetables]
+tasty = yes
+healthy=
+`,
+		expected: ini.Data{
+			[]ini.Section{
+				{
+					Name: "vegetables",
+					Fields: []ini.Field{
+						{Key: "tasty", Value: "yes"},
+						{Key: "healthy", Value: ""},
+					},
+				},
+			},
+		},
+	},
+	{
+		name: "should ignore comments",
+		content: `
 [fruit]
 [vegetables]
 #[poison]
 [desserts]
 # poison=yes
 `,
-			expected: []ini.Section{
-				ini.Section{Name: "fruit"},
-				ini.Section{Name: "vegetables"},
-				ini.Section{Name: "desserts"},
+		expected: ini.Data{
+			[]ini.Section{
+				{Name: "fruit"},
+				{Name: "vegetables"},
+				{Name: "desserts"},
 			},
 		},
-	}
+	},
+}
 
-	for _, tc := range cases {
+func TestParseString(t *testing.T) {
+	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			actual := ini.ParseString(tc.input)
+			actual := *ini.ParseString(tc.content)
 
 			if !reflect.DeepEqual(actual, tc.expected) {
+				t.Errorf("expected = %v, actual = %v", tc.expected, actual)
+			}
+		})
+	}
+}
+
+func TestParseFile(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// write content to a tempfile
+			configPath := filepath.Join(t.TempDir(), "test.ini")
+			err := os.WriteFile(configPath, []byte(tc.content), 0644)
+			if err != nil {
+				t.Errorf("could not write test.ini: %v", err)
+			}
+
+			// read it with the library
+			actual, err := ini.ParseFile(configPath)
+
+			// make sure there was no error
+			if err != nil {
+				t.Errorf("could not write test.ini: %v", err)
+			}
+
+			// compare to the test case
+			if !reflect.DeepEqual(*actual, tc.expected) {
 				t.Errorf("expected = %v, actual = %v", tc.expected, actual)
 			}
 		})
