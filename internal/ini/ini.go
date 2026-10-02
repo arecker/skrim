@@ -7,7 +7,8 @@ import (
 )
 
 type Data struct {
-	Sections []Section
+	Sections        []Section
+	originalContent string
 }
 
 type Section struct {
@@ -63,10 +64,12 @@ func ParseString(content string) *Data {
 	}
 
 	// append the final section
-	sections = append(sections, *curSection)
+	if curSection != nil {
+		sections = append(sections, *curSection)
+	}
 
 	// done!
-	return &Data{Sections: sections}
+	return &Data{Sections: sections, originalContent: content}
 }
 
 func ParseFile(path string) (*Data, error) {
@@ -80,4 +83,52 @@ func ParseFile(path string) (*Data, error) {
 
 func isCommented(line string) bool {
 	return strings.HasPrefix(strings.TrimSpace(line), "#")
+}
+
+// Fetches a section by name
+func (data *Data) Get(sectionName string) *Section {
+	for i := range data.Sections {
+		if data.Sections[i].Name == sectionName {
+			return &data.Sections[i]
+		}
+	}
+
+	return nil
+}
+
+// Sets a field in a section
+func (data *Data) Put(sectionName string, fieldKey string, fieldValue string) {
+	// see if the section exists
+	section := data.Get(sectionName)
+
+	if section == nil {
+		// new section, so make a new one with the key/value
+		data.Sections = append(data.Sections, Section{
+			Name: sectionName,
+			Fields: []Field{
+				{Key: fieldKey, Value: fieldValue},
+			},
+		})
+		return
+	}
+
+	// iterate over the existing fields
+	for i := range section.Fields {
+		if section.Fields[i].Key == fieldKey {
+			// overwrite it
+			section.Fields[i].Value = fieldValue
+			return
+		}
+	}
+
+	// new key, so append it
+	section.Fields = append(section.Fields, Field{
+		Key:   fieldKey,
+		Value: fieldValue,
+	})
+}
+
+// Convert the Data to a string
+func (d *Data) String() string {
+	return ""
 }
