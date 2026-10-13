@@ -4,7 +4,6 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
-	"reflect"
 	"skrim/internal/ini"
 	"strings"
 	"testing"
@@ -122,14 +121,47 @@ healthy=
 	},
 }
 
+func compareSections(t *testing.T, actual []ini.Section, expected []ini.Section) {
+	// compare length
+	if len(actual) != len(expected) {
+		t.Errorf(
+			"actual has %d sections, expected has %d sections",
+			len(actual), len(expected),
+		)
+		return
+	}
+
+	for i := range expected {
+		compareSection(t, actual[i], expected[i])
+	}
+}
+
+func compareSection(t *testing.T, actual ini.Section, expected ini.Section) {
+	// compare names
+	if actual.Name != expected.Name {
+		t.Errorf("names don't match: actual = %s, expected = %s", actual.Name, expected.Name)
+	}
+
+	// compare fields
+	for i := range expected.Fields {
+		compareField(t, actual.Fields[i], expected.Fields[i])
+	}
+}
+
+func compareField(t *testing.T, actual ini.Field, expected ini.Field) {
+	if actual.Key != expected.Key || actual.Value != expected.Value {
+		t.Errorf(
+			"fields do not match: actual = %v, expected = %v",
+			actual, expected,
+		)
+	}
+}
+
 func TestParseString(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			actual := *ini.ParseString(tc.content)
-
-			if !reflect.DeepEqual(actual.Sections, tc.expected.Sections) {
-				t.Errorf("expected = %v, actual = %v", tc.expected, actual)
-			}
+			compareSections(t, actual.Sections, tc.expected.Sections)
 		})
 	}
 }
@@ -153,9 +185,7 @@ func TestParseFile(t *testing.T) {
 			}
 
 			// compare to the test case
-			if !reflect.DeepEqual(actual.Sections, tc.expected.Sections) {
-				t.Errorf("expected = %v, actual = %v", tc.expected, actual)
-			}
+			compareSections(t, actual.Sections, tc.expected.Sections)
 		})
 	}
 
@@ -198,12 +228,7 @@ option_2 = maybe
 	actual := data.Get("skrim")
 
 	// compare
-	if !reflect.DeepEqual(*actual, expected) {
-		t.Errorf(
-			"TestDataGet() didn't return section, actual = %v, expected = %v",
-			actual, expected,
-		)
-	}
+	compareSection(t, *actual, expected)
 
 	// maybe i'm ignorant and this is just how go works, but makes
 	// sure that modifying the section updates the actual data
@@ -258,12 +283,7 @@ tasty = no
 		},
 	}
 
-	if !reflect.DeepEqual(data.Sections, expected.Sections) {
-		t.Errorf(
-			"TestDataPut() did not modify correctly, actual = %v, expected = %v",
-			*data, expected,
-		)
-	}
+	compareSections(t, data.Sections, expected.Sections)
 }
 
 func TestDataString(t *testing.T) {
