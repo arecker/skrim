@@ -16,17 +16,10 @@ type Section struct {
 	Fields []Field
 }
 
-type Field struct {
-	Key   string
-	Value string
-}
-
 // Parse a string into ini data sections
 func ParseString(content string) *Data {
 	// [<name>]
 	re_sec := regexp.MustCompile(`\[([^]]+)\]`)
-	// <key> = <value>
-	re_field := regexp.MustCompile(`^([^=]+)\s*=\s*(.*)$`)
 
 	sections := []Section{}
 	var curSection *Section
@@ -51,15 +44,8 @@ func ParseString(content string) *Data {
 		}
 
 		// check for key=val field
-		if matches := re_field.FindStringSubmatch(line); matches != nil {
-			// extract key/value
-			key := strings.TrimSpace(matches[1])
-			value := strings.TrimSpace(matches[2])
-			// add Field to current section
-			if curSection != nil {
-				field := Field{Key: key, Value: value}
-				curSection.Fields = append(curSection.Fields, field)
-			}
+		if field := FindField(line); field != nil {
+			curSection.Fields = append(curSection.Fields, *field)
 		}
 	}
 

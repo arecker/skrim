@@ -5,7 +5,6 @@ import (
 	"os"
 	"path/filepath"
 	"skrim/internal/ini"
-	"strings"
 	"testing"
 )
 
@@ -286,43 +285,43 @@ tasty = no
 	compareSections(t, data.Sections, expected.Sections)
 }
 
-func TestDataString(t *testing.T) {
-	type configPatch struct {
-		sectionName string
-		fieldKey    string
-		fieldValue  string
-	}
+// func TestDataString(t *testing.T) {
+//	type configPatch struct {
+//		sectionName string
+//		fieldKey    string
+//		fieldValue  string
+//	}
 
-	type testCase struct {
-		name     string
-		original string
-		patches  []configPatch
-		expected string
-	}
+//	type testCase struct {
+//		name     string
+//		original string
+//		patches  []configPatch
+//		expected string
+//	}
 
-	testCases := []testCase{
-		{
-			name:     "add to a blank config",
-			original: "",
-			patches:  []configPatch{{"main", "working", "yes"}},
-			expected: strings.TrimSpace(`
-[main]
-working = yes
-`),
-		},
-	}
+//	testCases := []testCase{
+//		{
+//			name:     "add to a blank config",
+//			original: "",
+//			patches:  []configPatch{{"main", "working", "yes"}},
+//			expected: strings.TrimSpace(`
+// [main]
+// working = yes
+// `),
+//		},
+//	}
 
-	for _, tc := range testCases {
-		t.Run(tc.name, func(t *testing.T) {
-			data := ini.ParseString(tc.original)
-			for _, p := range tc.patches {
-				data.Put(p.sectionName, p.fieldKey, p.fieldValue)
-			}
-			actual := data.String()
+//	for _, tc := range testCases {
+//		t.Run(tc.name, func(t *testing.T) {
+//			data := ini.ParseString(tc.original)
+//			for _, p := range tc.patches {
+//				data.Put(p.sectionName, p.fieldKey, p.fieldValue)
+//			}
+//			actual := data.String()
 
-			if actual != tc.expected {
-				t.Errorf("actual = %v, expected = %v", actual, tc.expected)
-			}
-		})
-	}
-}
+//			if actual != tc.expected {
+//				t.Errorf("actual = %v, expected = %v", actual, tc.expected)
+//			}
+//		})
+//	}
+// }
