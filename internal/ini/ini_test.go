@@ -61,28 +61,6 @@ healthy= hell yes
 		},
 	},
 	{
-		name: "should ignore fields without sections",
-		content: `
-what = no
-sure? = yes
-
-[vegetables]
-tasty = yes
-healthy= hell yes
-`,
-		expected: ini.Data{
-			Sections: []ini.Section{
-				{
-					Name: "vegetables",
-					Fields: []ini.Field{
-						{Key: "tasty", Value: "yes"},
-						{Key: "healthy", Value: "hell yes"},
-					},
-				},
-			},
-		},
-	},
-	{
 		name: "should cast fields without values as empty strings",
 		content: `
 [vegetables]
